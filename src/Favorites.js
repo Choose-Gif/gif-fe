@@ -4,7 +4,7 @@ export default class Favorites extends Component {
     render() {
         return (
             <div>
-                
+                Favorites Page
             </div>
         )
     }
