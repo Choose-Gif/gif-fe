@@ -10,10 +10,10 @@ export default class Search extends Component {
 
     componentDidMount = async () => {
         const response = await request
-        .get('https://choose-gif-be.herokuapp.com/search')
+        .get('https://choose-gif-be.herokuapp.com/search?query=cats')
         // .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
         // console.log(this.state.query)
-        console.log(response.body.data)
+        console.log(response.body.data[0])
         this.setState({ searchResults: response.body.data });
     }
 
