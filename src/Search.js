@@ -4,14 +4,17 @@ import request from 'superagent';
 export default class Search extends Component {
 
     state = {
-        search: []
+        query: '',
+        searchResults: [],
     }
 
     componentDidMount = async () => {
         const response = await request
-        .get('https://choose-gif-be.herokuapp.com/search?query=cats')
-        
-        this.setState({ search: response.body });
+        .get('https://choose-gif-be.herokuapp.com/search')
+        // .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
+        // console.log(this.state.query)
+        console.log(response.body.data)
+        this.setState({ searchResults: response.body.data });
     }
 
 
@@ -21,7 +24,7 @@ export default class Search extends Component {
                 Search Page
 
                 {
-                    this.state.search.map(oneItem => 
+                    this.state.searchResults.map(oneItem => 
                         <div>
                             Title: {oneItem.title}
                         </div>
