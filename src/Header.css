@@ -17,6 +17,10 @@ button {
     color: white;
 }
 
+.header-logout-button {
+    color: springgreen;
+}
+
 .header-div {
       background-color: gray;
       display: flex;
@@ -25,12 +29,19 @@ button {
       height: 15vh;
   }
 
-  .header-links-div {
+  .header-links-div, .favorites-div {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
       /* margin: 5% 5%; */
+  }
+
+  .favorites-div {
+      /* border: solid 1px slateblue; */
+      height: 50%;
+      width: 10%;
+      align-self: center;
   }
 
   .favorites-link {
@@ -41,11 +52,18 @@ button {
       width: fit-content;
       margin: 0 10px;
   }
-  
-
 
   .header-search-div, .header-sign-div {
     align-self: center;
+  }
+
+  .header-sign-div {
+      /* border: solid 1px slateblue; */
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: flex-end;
+      width: 32%;
   }
 
   

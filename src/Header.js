@@ -14,6 +14,10 @@ export default class Header extends Component {
     state = {
         token: 'token'
     }
+
+    logOut = () => {
+        this.setState({ token: '' })
+    }
     
     render() {
         return (
@@ -28,6 +32,8 @@ export default class Header extends Component {
             <div className='header-links-div'>
                 <Link to='/'>Home</Link>
                 <Link to='/about'>About Us 👋</Link>
+            </div>
+            <div className='favorites-div'>
                 { this.state.token && <Link to='/favorites' className='favorites-link'>🌟</Link> }
                 
             </div>
@@ -46,10 +52,12 @@ export default class Header extends Component {
                     </button>
                 </Link>
             }
-                <div>
+                <div className='header-logout-div'>
                 { this.state.token &&
                 <Link to='/'>
-                    <button className='header-signin-button'>
+                    <button
+                     onClick={this.logOut}
+                     className='header-logout-button'>
                         Log Out
                     </button>
                 </Link>
