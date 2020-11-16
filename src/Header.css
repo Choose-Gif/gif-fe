@@ -2,10 +2,6 @@
     box-sizing: border-box;
   }
 
-  div {
-    /* border: solid 2px black; */
-}
-
 a {
     /* background-color: greenyellow; */
     /* color: purple; */
@@ -28,6 +24,11 @@ button {
       padding: 1%;
       height: 15vh;
   }
+
+  .header-search-div{
+    align-self: center;
+  }
+
 
   .header-links-div, .favorites-div {
       display: flex;
@@ -53,15 +54,11 @@ button {
       margin: 0 10px;
   }
 
-  .header-search-div, .header-sign-div {
-    align-self: center;
-  }
-
   .header-sign-div {
       /* border: solid 1px slateblue; */
       display: flex;
       flex-direction: row;
-      align-items: flex-end;
+      align-self: center;
       justify-content: flex-end;
       width: 32%;
   }
