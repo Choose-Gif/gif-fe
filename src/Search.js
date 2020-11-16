@@ -1,34 +1,28 @@
 import React, { Component } from 'react';
 import request from 'superagent';
+import Header from './Header.js';
 
 export default class Search extends Component {
 
-    state = {
-        query: '',
-        searchResults: [],
-    }
-
     componentDidMount = async () => {
-        const response = await request
-        .get('https://choose-gif-be.herokuapp.com/search?query=cats')
-        // .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
-        // console.log(this.state.query)
-        console.log(response.body.data[0])
-        this.setState({ searchResults: response.body.data });
+     
     }
-
 
     render() {
         return (
             <div>
                 Search Page
-
+                    <form onSubmit={this.props.handleSubmit}>
+                        <input 
+                            value={this.props.query} 
+                            onChange={this.props.handleInput}/>
+                        <button>Submit</button>
+                    </form>
                 {
-                    this.state.searchResults.map(oneItem => 
+                    this.props.searchResults.map(oneItem => 
                         <div>
                             Title: {oneItem.title}
                         </div>
-
                     )
                 }
 

@@ -12,21 +12,47 @@ import Home from './Home.js'
 import About from './About.js'
 import Header from './Header.js'
 import PrivateRoute from './PrivateRoute.js';
+import request from 'superagent';
 import './App.css';
 
 export default class App extends Component {
-  state = { token: localStorage.getItem('TOKEN') }
+
+  state = { 
+    token: localStorage.getItem('TOKEN'),
+    query: '',
+    searchResults: []
+  
+  }
 
   handleTokenChange = (myToken) => {
     this.setState({ token: myToken });
     localStorage.setItem('TOKEN', myToken);
   }
 
+  handleSubmit = async e => {
+    e.preventDefault();
+    //console.log(this.context)
+    //this.context.router.push('/search')
+    const response = await request
+   .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
+   console.log(response.body.data)
+   this.setState({ searchResults: response.body.data });
+ }
+
+
+
+  handleInput = async e => {
+    this.setState({ query: e.target.value })
+  }
+
   render() {
     return (
       <div>
         <Router>
-          <Header/>
+        <Header 
+            handleInput={this.handleInput} 
+            handleSubmit={this.handleSubmit}
+            query = {this.state.query}/>
           {/* <ul>
             { this.state.token && <div>welcome, user!!!</div> }
             { this.state.token && <Link to="/todos"><div>todos</div></Link> }
@@ -35,6 +61,7 @@ export default class App extends Component {
             <button onClick={() => this.handleTokenChange('')}>logout</button>
           </ul> */}
           <Switch>
+          
             <Route exact path='/signin' render={(routerProps) => <SignIn 
                 handleTokenChange={this.handleTokenChange} 
                 {...routerProps} />} 
@@ -55,6 +82,9 @@ export default class App extends Component {
             exact path='/search' 
               render={(routerProps) => <Search 
                 handleTokenChange={this.handleTokenChange} 
+                searchResults = {this.state.searchResults}
+                handleInput={this.handleInput} 
+                handleSubmit={this.handleSubmit}
                 {...routerProps}/>} 
               />
             <Route 
