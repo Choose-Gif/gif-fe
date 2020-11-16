@@ -7,6 +7,7 @@ export default class Search extends Component {
     render() {
         return (
             <div>
+                <div className="header-test" >
                 <h2>Search Page</h2>
                 <form onSubmit={this.props.handleSubmit}>
                     <input 
@@ -14,12 +15,15 @@ export default class Search extends Component {
                         onChange={this.props.handleInput}/>
                     <button>Submit</button>
                 </form>
+                </div>
                 <div className="group">
                 {
                     this.props.searchResults.map(oneItem => 
-                        <div classname="individual" key={`${oneItem.title}${Math.random()}`}>
-                            <img className="item-picture" src={oneItem.images.original.url} alt={oneItem.title}></img>
+                        <div key={`${oneItem.title}${Math.random()}`}>
+                            <div className="individual">
+                            <img className="item-picture" src={oneItem.images.downsized_medium.url} alt={oneItem.title}></img>
                             <p className="item-text">Title: {oneItem.title}</p>
+                            </div>
                             {/* <p className="item-text">Url: {oneItem.images.original.url}</p> */}
                         </div>
                     )
