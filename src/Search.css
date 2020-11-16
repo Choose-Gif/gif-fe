@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #000000;
+  }
+
+.individual {
+    border: 15px solid pink;
+    background-color: #fffaff81;
+}
+
+img {
+    height: 300px;
+}
+
+.item-text {
+    color: #3E92CC;
+}
+/* .individual {
+    border: 15px solid #FFDE00;
+    height: 450px;
+    border-radius: 20px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #B3A125;
+} */
