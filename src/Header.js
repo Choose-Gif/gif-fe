@@ -10,6 +10,10 @@ import {
 import './Header.css';
 
 export default class Header extends Component {
+
+    state = {
+        token: 'token'
+    }
     
     render() {
         return (
@@ -22,22 +26,35 @@ export default class Header extends Component {
             </Link>
             </div>
             <div className='header-links-div'>
-                <Link to='/'>Home</Link><br />
-                <Link to='/favorites'>Favorites 🌟</Link><br />
-                <Link to='/about'>About Us 👋</Link><br />
-                <Link to='/test'>Test</Link>
+                <Link to='/'>Home</Link>
+                <Link to='/about'>About Us 👋</Link>
+                { this.state.token && <Link to='/favorites' className='favorites-link'>🌟</Link> }
+                
             </div>
             <div className='header-sign-div'>
+            { !this.state.token && 
                 <Link to='/signup'>
                     <button className='header-signup-button'>
                         Sign Up
                     </button>
                 </Link>
+            }
+            { !this.state.token && 
                 <Link to='/signin'>
                     <button className='header-signin-button'>
                         Sign In
                     </button>
                 </Link>
+            }
+                <div>
+                { this.state.token &&
+                <Link to='/'>
+                    <button className='header-signin-button'>
+                        Log Out
+                    </button>
+                </Link>
+                }
+                </div>
             </div>
         </div>
         )

@@ -2,20 +2,50 @@
     box-sizing: border-box;
   }
 
+  div {
+    /* border: solid 2px black; */
+}
+
+a {
+    /* background-color: greenyellow; */
+    /* color: purple; */
+    text-decoration: none;
+}
+
+button {
+    background-color: black;
+    color: white;
+}
+
 .header-div {
       background-color: gray;
       display: flex;
       justify-content: space-between;
+      padding: 1%;
       height: 15vh;
   }
 
-  a {
-      /* background-color: greenyellow; */
-      /* color: purple; */
-      text-decoration: none;
+  .header-links-div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      /* margin: 5% 5%; */
   }
+
+  .favorites-link {
+      background-color: purple;
+      border: solid 2px goldenrod;
+      border-radius: 50%;
+      height: fit-content;
+      width: fit-content;
+      margin: 0 10px;
+  }
+  
+
 
   .header-search-div, .header-sign-div {
     align-self: center;
   }
 
+  
