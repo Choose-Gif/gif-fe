@@ -49,10 +49,7 @@ export default class App extends Component {
     return (
       <div>
         <Router>
-        <Header 
-            handleInput={this.handleInput} 
-            handleSubmit={this.handleSubmit}
-            query = {this.state.query}/>
+        <Header/>
           {/* <ul>
             { this.state.token && <div>welcome, user!!!</div> }
             { this.state.token && <Link to="/todos"><div>todos</div></Link> }
@@ -61,7 +58,6 @@ export default class App extends Component {
             <button onClick={() => this.handleTokenChange('')}>logout</button>
           </ul> */}
           <Switch>
-          
             <Route exact path='/signin' render={(routerProps) => <SignIn 
                 handleTokenChange={this.handleTokenChange} 
                 {...routerProps} />} 
