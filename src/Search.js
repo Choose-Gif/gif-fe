@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import './Search.css';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
 export default class Search extends Component {
+
+    state = {
+        value: '',
+        copied: false,
+      };
 
     render() {
         return (
@@ -22,9 +28,14 @@ export default class Search extends Component {
                         <div key={`${oneItem.title}${Math.random()}`}>
                             <div className="individual">
                             <img className="item-picture" src={oneItem.images.downsized_medium.url} alt={oneItem.title}></img>
-                            <p className="item-text">Title: {oneItem.title}</p>
+                            <p>
+                                <input className="item-input" value={oneItem.images.original.url} type="hidden" />
+                                <CopyToClipboard text={oneItem.images.original.url}
+                                onCopy={() => this.setState({copied: true})}>
+                                <button className="item-button">Copy to Clipboard</button>
+                                </CopyToClipboard>
+                            </p>
                             </div>
-                            {/* <p className="item-text">Url: {oneItem.images.original.url}</p> */}
                         </div>
                     )
                 }
