@@ -41,37 +41,37 @@ export default class Home extends Component {
     render() {
         console.log(this.state.trendingResults[0])
         return (
-            <div>
+            <div className="parent-container">
                 <div className="scene">
                     <div className="cube">
                         <div className="cube-face cube-face-front">
                             <a href="https://giphy.com/search/rocket-launch">
-                            <img alt='test gif' src={this.state.imageUrl[0]} />
+                            <img className="cube-images" alt='test gif' src={this.state.imageUrl[0]} />
                             </a>
                         </div>
                         <div className="cube-face cube-face-back">
                             <a href="https://giphy.com/search/rocket-launch">
-                            <img alt='test gif' src={this.state.imageUrl[1]} />
+                            <img className="cube-images" alt='test gif' src={this.state.imageUrl[1]} />
                             </a>
                         </div>
                         <div className="cube-face cube-face-right">
                         <a href="https://giphy.com/search/rocket-launch">
-                            <img alt='test gif' src={this.state.imageUrl[2]} />
+                            <img className="cube-images" alt='test gif' src={this.state.imageUrl[2]} />
                             </a>
                         </div>
                         <div className="cube-face cube-face-left">
                         <a href="https://giphy.com/search/rocket-launch">
-                            <img alt='test gif' src={this.state.imageUrl[3]} />
+                            <img className="cube-images" alt='test gif' src={this.state.imageUrl[3]} />
                             </a>
                         </div>
                         <div className="cube-face cube-face-top">
                         <a href="https://giphy.com/search/rocket-launch">
-                            <img alt='test gif' src={this.state.imageUrl[4]} />
+                            <img className="cube-images" alt='test gif' src={this.state.imageUrl[4]} />
                             </a>
                         </div>
                         <div className="cube-face cube-face-bottom">
                         <a href="https://giphy.com/search/rocket-launch">
-                            <img alt='test gif' src={this.state.imageUrl[5]} />
+                            <img className="cube-images" alt='test gif' src={this.state.imageUrl[5]} />
                             </a>
                         </div>
                     </div>
