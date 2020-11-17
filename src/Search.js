@@ -7,10 +7,10 @@ export default class Search extends Component {
 
     state = {
         value: '',
-        copied: false,
+        copied: false, favorite: false
       };
 
-    render() {
+    render() { console.log(this.state.favorite);
         return (
             <div>
                 <div className="header-test" >
@@ -41,10 +41,28 @@ export default class Search extends Component {
 
 
 
-{/* Line 44 is the border */}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* Line 44 was the border; now Line 65 is the border */}
 
 
 
@@ -63,6 +81,26 @@ export default class Search extends Component {
                             <img className="item-picture" src={oneItem.images.downsized_medium.url} alt={oneItem.title}></img>
                             <p>
                                 <input className="item-input" value={oneItem.images.original.url} type="hidden" />
+
+
+                                {/* NEW BUTTON STARTS HERE */}
+
+
+                                { this.state.favorite === false &&
+                                <button
+                                 onClick={ () => this.setState({ favorite: true })}
+                                 className='favorite-button'>♡</button>
+                                }
+                                { this.state.favorite === true &&
+                                <button
+                                 onClick={ () => this.setState({ favorite: false })}
+                                 className='favorite-button'>💖</button>
+                                }
+
+                                {/* NEW BUTTON ENDS HERE */}
+
+
+
                                 <CopyToClipboard text={oneItem.images.original.url}
                                 onCopy={() => this.setState({copied: true})}>
                                 <button className="item-button">Copy to Clipboard</button>
@@ -77,3 +115,10 @@ export default class Search extends Component {
         )
     }
 }
+
+
+
+// CHANGES MADE ABOVE MY ZONE
+// npm install reactjs-popup --save
+// Line 4: import Popup from 'reactjs-popup';
+// Line 10: Add "favorite: false" to state.
