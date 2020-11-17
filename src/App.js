@@ -31,13 +31,16 @@ export default class App extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    //console.log(this.context)
-    //this.context.router.push('/search')
     const response = await request
    .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
-   console.log(response.body.data)
    this.setState({ searchResults: response.body.data });
- }
+  }
+
+  handleCategory = async (category) => {
+    const response = await request
+   .get(`https://choose-gif-be.herokuapp.com/search?query=${category}`)
+   await this.setState({ searchResults: response.body.data });
+}
 
   handleInput = async e => {
     this.setState({ query: e.target.value })
@@ -46,7 +49,7 @@ export default class App extends Component {
   handleLogOut = () => {
     localStorage.setItem('TOKEN', '');
     this.setState({ token: '' })
-}
+  }
 
   render() {
     return (
@@ -86,6 +89,7 @@ export default class App extends Component {
                 searchResults = {this.state.searchResults}
                 handleInput={this.handleInput} 
                 handleSubmit={this.handleSubmit}
+                handleCategory={this.handleCategory}
                 {...routerProps}/>} 
               />
             <Route 

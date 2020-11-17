@@ -37,9 +37,7 @@ export default class Home extends Component {
         }
     }
 
-
     render() {
-        console.log(this.state.trendingResults[0])
         return (
             <div className="parent-container">
                 <div className="scene">

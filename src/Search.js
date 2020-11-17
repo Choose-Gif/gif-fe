@@ -1,47 +1,61 @@
 import React, { Component } from 'react';
-import './Search.css';
+import request from 'superagent';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-
+import './Search.css';
 
 export default class Search extends Component {
 
     state = {
         value: '',
         copied: false,
+        categories: [],
+        subCategories: [],
+        categoryResults: [],
       };
+
+    componentDidMount = async () => {
+        await this.fetchCategories()
+    }
+
+    fetchCategories = async () => {
+        try {
+            const response = await request.get(`https://api.giphy.com/v1/gifs/categories?api_key=YipqcygnSfwA4INWcd6BhsBNrAEPY7AZ`);
+            await this.setState({ categories: response.body.data });
+        } catch(err) {
+            throw err;
+        }
+    }      
 
     render() {
         return (
-            <div>
-                <div className="header-test" >
-                <h2>Search Page</h2>
-                <form onSubmit={this.props.handleSubmit}>
-                    <input 
-                        value={this.props.query} 
-                        onChange={this.props.handleInput}/>
-                    <button>Submit</button>
-                </form>
+            <div className="search-parent">
+                <div className="header-search" >
+                    <h2>Search Page</h2>
+                    <form onSubmit={this.props.handleSubmit}>
+                        <input 
+                            value={this.props.query} 
+                            onChange={this.props.handleInput}/>
+                        <button>Submit</button>
+                    </form>
+                </div>
+                <div className="dropdown">
+                    <button className="drop-button">Categories</button>
+                    <div className="dropdown-content">
+                        {
+                        this.state.categories.map(category => {
+                                return <span 
+                                onClick={() => this.props.handleCategory(category.name)}>
+                                {category.name}</span>
+                            })
+                        }
+                    </div>
                 </div>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* Line 44 is the border */}
+{/* Line 64 is the border */}
 
 
 
