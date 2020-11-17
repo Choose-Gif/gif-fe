@@ -32,7 +32,7 @@ body {
     width: 200px;
     height: 200px;
     perspective: 600px;
-    border: 1px solid #CCC;
+    /* border: 1px solid #CCC; */
     margin: 80px;
     perspective: 400px;
   }
@@ -45,7 +45,7 @@ body {
     /* font-size: 2.5em; */
     /* transform: scale(2.5); */
     transform: translateZ(-100px);
-    transition: transform 1s;
+    transition: transform .1s;
     animation-name: rotate;
     animation-duration: 30s;
     animation-timing-function: linear;
@@ -60,10 +60,10 @@ body {
       transform: rotate3d(1, 1, 1, 45deg);
     }
     50% {
-      transform: rotate3d(1, 2, -1, 192deg);
+      transform: rotate3d(2, 1, 1, 192deg);
     }
     100% {
-      transform: rotate3d(0, 1, 0, 360deg);
+      transform: rotate3d(2, 1, 1, 360deg);
       ;
     }
   }
