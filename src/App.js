@@ -18,13 +18,13 @@ import './App.css';
 export default class App extends Component {
 
   state = { 
-    token: localStorage.getItem('TOKEN'),
+    token: localStorage.getItem('TOKEN') || '',
     query: '',
     searchResults: []
   
   }
 
-  handleTokenChange = (myToken) => {
+  handleTokenChange = (myEmail, myToken) => {
     this.setState({ token: myToken });
     localStorage.setItem('TOKEN', myToken);
   }
@@ -39,17 +39,22 @@ export default class App extends Component {
    this.setState({ searchResults: response.body.data });
  }
 
-
-
   handleInput = async e => {
     this.setState({ query: e.target.value })
   }
+
+  handleLogOut = () => {
+    localStorage.setItem('TOKEN', '');
+    this.setState({ token: '' })
+}
 
   render() {
     return (
       <div>
         <Router>
-        <Header/>
+        <Header
+        token={this.state.token}
+        handleLogOut={this.handleLogOut}/>
           {/* <ul>
             { this.state.token && <div>welcome, user!!!</div> }
             { this.state.token && <Link to="/todos"><div>todos</div></Link> }

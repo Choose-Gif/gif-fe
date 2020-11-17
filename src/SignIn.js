@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import request from 'superagent';
 import './SignUp.css';
 
+//Currently uses SignUp.css and 'signup' classNames for styling
+
 export default class SignIn extends Component {
 
     state = {
         email: '',
         password: '',
-        loading: false
+        loading: false,
+        err: null
     }
 
     handleSubmitSignIn = async (e) => {
@@ -29,12 +32,12 @@ export default class SignIn extends Component {
 
     render() {
         return (
-            <div className='signin-div'>
-                <div className='signin-content'>
+            <div className='signup-div'>
+                <div className='signup-content'>
                     Sign In
                     <form
                      onSubmit={this.handleSubmitSignIn}
-                     className='signin-form'>
+                     className='signup-form'>
                         <label>
                             Email:
                             <input

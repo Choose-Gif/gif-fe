@@ -11,7 +11,6 @@
   }
 
   .signup-div {
-      border: solid 2px green;
       display: flex;
       /* flex-direction: column; */
       align-items: center;
@@ -24,7 +23,7 @@
   }
 
   .signup-form {
-      border: solid 2px blue;
+      /* border: solid 2px blue; */
       display: flex;
       flex-direction: column;
       align-items: flex-end;

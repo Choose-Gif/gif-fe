@@ -11,14 +11,11 @@ import './Header.css';
 
 export default class Header extends Component {
 
-    state = {
-        token: localStorage.getItem('TOKEN') || ''
-    }
 
-    handleLogOut = () => {
-        localStorage.setItem('TOKEN', '');
-        this.setState({ token: '' })
-    }
+    // handleLogOut = () => {
+    //     localStorage.setItem('TOKEN', '');
+    //     this.setState({ token: '' })
+    // }
 
     // fakeHandleSignIn = () => {
     //     this.setState({ token: 'token' })
@@ -45,19 +42,19 @@ export default class Header extends Component {
 
                 {/* Favorites "STAR ICON" (when logged in) */}
                 <div className='favorites-div'>
-                    { this.state.token && <Link to='/favorites' className='favorites-link'>🌟</Link> }
+                    { this.props.token && <Link to='/favorites' className='favorites-link'>🌟</Link> }
                 </div>
 
                 {/* Sign Up/Sign In and Log Out buttons */}
                 <div className='header-sign-div'>
-                    { !this.state.token && 
+                    { !this.props.token && 
                         <Link to='/signup'>
                             <button className='header-signup-button'>
                                 Sign Up
                             </button>
                         </Link>
                     }
-                    { !this.state.token && 
+                    { !this.props.token && 
                         <Link to='/signin'>
                             <button
                             // onClick={this.fakeHandleSignIn}
@@ -67,10 +64,10 @@ export default class Header extends Component {
                         </Link>
                     }
                     <div className='header-logout-div'>
-                    { this.state.token &&
+                    { this.props.token &&
                     <Link to='/'>
                         <button
-                        onClick={this.handleLogOut}
+                        onClick={this.props.handleLogOut}
                         className='header-logout-button'>
                             Log Out
                         </button>
