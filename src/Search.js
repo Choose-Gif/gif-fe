@@ -22,6 +22,39 @@ export default class Search extends Component {
                     <button>Submit</button>
                 </form>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* Line 44 is the border */}
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div className="group">
                 {
                     this.props.searchResults.map(oneItem => 

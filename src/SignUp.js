@@ -7,8 +7,7 @@ export default class SignUp extends Component {
     state = {
         email: '',
         password: '',
-        loading: false,
-        err: null
+        loading: false
     }
 
     handleSubmitSignUp = async (e) => {
