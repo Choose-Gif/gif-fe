@@ -1,0 +1,44 @@
+.main-section{
+    display:flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.name{
+    align-content: center;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.about{
+    width: 51%;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.about-pic{
+    width:200px;
+    height: 200px;
+}
+
+.about-blurb{
+    width: 150%;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
