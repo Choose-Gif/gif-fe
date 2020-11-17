@@ -83,6 +83,20 @@ export default class Home extends Component {
                         </div>
                     </div>
                 </div>
+                <div className="box-group">
+                    <div className="box-single">
+                        <img className="box-image" alt={this.state.imageTitle[5]} src={this.state.imageUrl[5]} />
+                        <div className="box-text">{this.state.trendingList[0]}</div>
+                    </div>
+                    <div className="box-single">
+                        <img className="box-image" alt={this.state.imageTitle[4]} src={this.state.imageUrl[4]} />
+                        <div className="box-text">{this.state.trendingList[1]}</div>
+                    </div>
+                    <div className="box-single">
+                        <img className="box-image" alt={this.state.imageTitle[3]} src={this.state.imageUrl[3]} />
+                        <div className="box-text">{this.state.trendingList[2]}</div>
+                    </div>
+                </div>
                 <div id='trending-terms'>
                 {this.state.trendingList.map(oneItem => {
                     return <div key={oneItem} className='trending-item'>#{oneItem}</div>

@@ -9,6 +9,38 @@ body {
     flex-wrap: wrap;
 }
 
+.box-group {
+  width: 80%;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.box-single {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 130px;
+  width: 170px;
+  position: relative;
+}
+
+.box-image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  filter: brightness(50%);
+}
+
+.box-text {
+  position: absolute;
+  width: 100px;
+  text-transform: capitalize;
+}
+
 #trending-terms{
     display: flex;
     flex-wrap: wrap;
