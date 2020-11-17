@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+  }
+
 .main-section{
     display:flex;
     flex-wrap: wrap;
@@ -35,10 +39,65 @@
     height: 200px;
 }
 
+.orientation{
+    display: flex;
+    flex-direction: column;
+}
+
+.border{
+    width: 70%;
+    border: solid 1px black;
+    padding: 10px;
+    margin: 10px;
+}
+
 .about-blurb{
-    width: 150%;
+    width: 200px;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    margin: 10px 0px 0px 0px;
+}
+
+
+.center{
     align-content: center;
     align-items: center;
     justify-items: center;
     justify-content: center;
 }
+
+.icon-container{
+    display: flex;
+    justify-content: space-evenly;
+    width: 200px;
+    margin: 5px 0px 0px 0px;
+}
+
+.name{
+    margin: 0px 0px 5px 0px;
+}
+
+@media (min-width: 800px) {
+    .about-blurb{
+        width:50%;
+        margin: 0px 0px 0px 30px;
+        padding-bottom:30px;
+    }
+    .orientation{
+        display: flex;
+        flex-direction: row;
+        
+    }
+
+    .border{
+        border: solid 1px black;
+        width: 55%;
+        
+
+    }
+
+    
+
+  }
