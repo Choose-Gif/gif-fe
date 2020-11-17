@@ -23,6 +23,7 @@ button {
       justify-content: space-between;
       padding: 1%;
       height: 15vh;
+      width: 100vw;
   }
 
   .header-search-div{
