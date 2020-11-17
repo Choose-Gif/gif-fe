@@ -39,7 +39,7 @@ export default class App extends Component {
   handleCategory = async (category) => {
     const response = await request
    .get(`https://choose-gif-be.herokuapp.com/search?query=${category}`)
-   await this.setState({ searchResults: response.body.data });
+   await this.setState({ searchResults: response.body.data, query: '' });
 }
 
   handleInput = async e => {
