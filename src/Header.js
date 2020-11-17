@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import request from 'superagent';
-import PropTypes from 'prop-types';
-import {
-    BrowserRouter as Router, 
-    Route, 
-    Switch,
-    Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Header.css';
 
 export default class Header extends Component {
