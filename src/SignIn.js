@@ -18,6 +18,8 @@ export default class SignIn extends Component {
 
         this.setState({ loading: true })
 
+        try {
+
         const user = await request
             .post('https://choose-gif-be.herokuapp.com/auth/signin')
             .send(this.state)
@@ -27,10 +29,16 @@ export default class SignIn extends Component {
         this.props.handleTokenChange(user.body.email, user.body.token)
 
         this.props.history.push('/favorites');
+    } catch(err) {
+        this.setState({ err: 'Email or Password Invalid'})
+        
+    };
+
     }
 
 
     render() {
+        const { err } = this.state;
         return (
             <div className='signup-div'>
                 <div className='signup-content'>
@@ -39,6 +47,7 @@ export default class SignIn extends Component {
                      onSubmit={this.handleSubmitSignIn}
                      className='signup-form'>
                         <label>
+                            {err && <div style={{ color: 'red'}}>{err}</div>}
                             Email:
                             <input
                              onChange={(e) => {this.setState({ email: e.target.value })}}
@@ -53,15 +62,10 @@ export default class SignIn extends Component {
                              type="password"
                             />
                         </label>
-                        {
-                            this.state.loading
-                            ? 'Loading'
-                            : <button>
-                                Sign In
-                            </button>
-                        }
+                        <button>
+                            Sign In
+                        </button>
                     </form>
-
                 </div>
             </div>
         )
