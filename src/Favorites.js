@@ -17,8 +17,6 @@ export default class Favorites extends Component {
         await this.fetchFavorites()
 
         let favoritesList =''
-
-        console.log(this.state.newFavorites)
         this.state.newFavorites.forEach(element => {
             favoritesList += ',' + element.giphy_id;
         });
@@ -26,7 +24,6 @@ export default class Favorites extends Component {
 
         if(favoritesList !==''){
             await this.fetchGiphyFavorites(favoritesList)
-            console.log(this.state.currentFavorites)
             await this.fetchFavorites()
 
         }
@@ -41,9 +38,8 @@ export default class Favorites extends Component {
       }
     
       fetchGiphyFavorites = async (favoritesList) => {
-          console.log(`https://choose-gif-be.herokuapp.com/giphy-favorites/${favoritesList}`)
         const response = await request
-          .get(`https://choose-gif-be.herokuapp.com/giphy-favorites/${favoritesList}`)
+          .get(`https://choose-gif-be.herokuapp.com/api/giphy-favorites/${favoritesList}`)
           .set('Authorization', this.props.token)
     
           await this.setState({ currentFavorites: response.body })
@@ -58,7 +54,6 @@ export default class Favorites extends Component {
         return (
             <div className="search-parent">
                 <div className="group">
-                    {console.log(this.state.currentFavorites.data)}
                 { (this.state.currentFavorites.data !== undefined) ?
                     this.state.currentFavorites.data.map(oneItem => 
                         <div key={`${oneItem.title}${Math.random()}`}>
