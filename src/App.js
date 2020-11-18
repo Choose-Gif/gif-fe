@@ -59,7 +59,7 @@ export default class App extends Component {
     const response = await request
       .get('https://choose-gif-be.herokuapp.com/api/favorites/')
       .set('Authorization', this.state.token)
-
+      
       this.setState({ newFavorites: response.body })
   }
 
@@ -150,6 +150,11 @@ export default class App extends Component {
               path='/favorites' 
               token={this.state.token} 
               render={(routerProps) => <Favorites token={this.state.token}
+              handleTokenChange={this.handleTokenChange}
+              fetchFavorites={this.fetchFavorites}
+              handleDeleteFavorite={this.handleDeleteFavorite}
+              fetchGiphyFavorites={this.fetchGiphyFavorites}
+              searchResults = {this.state.newFavorites}
               {...routerProps} />} />
           </Switch>
         </Router>
