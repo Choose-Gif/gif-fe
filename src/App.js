@@ -34,7 +34,7 @@ export default class App extends Component {
    .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
    this.setState({ searchResults: response.body.data });
     //KEEP THE LINE BELOW THIS COMMENT
-   await this.fetchFavorites();
+   //await this.fetchFavorites();
   }
 
   handleCategory = async (category) => {
@@ -101,6 +101,8 @@ export default class App extends Component {
             handleSubmit={this.handleSubmit}
             handleTokenChange={this.handleTokenChange} 
             handleInput={this.handleInput}
+            handleCategory={this.handleCategory}
+            categories = {this.state.categories}
                 {...routerProps} />} 
               />
           <Switch>

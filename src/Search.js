@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import request from 'superagent';
+
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './Search.css';
 
@@ -8,90 +8,18 @@ export default class Search extends Component {
     state = {
         value: '',
         copied: false,
-        categories: [],
-        subCategories: [],
-        categoryResults: [],
         favorite: false
       };
 
-    componentDidMount = async () => {
-        await this.fetchCategories()
-    }
-
-    fetchCategories = async () => {
-        try {
-            const response = await request.get(`https://api.giphy.com/v1/gifs/categories?api_key=YipqcygnSfwA4INWcd6BhsBNrAEPY7AZ`);
-            await this.setState({ categories: response.body.data });
-        } catch(err) {
-            throw err;
-        }
-    }
-
     //CLICK HANDLER TO DELETE FAVORITE
     handleClickDeleteFavorite = async (id) => {
-        // console.log(this.props.newFavorite.giphy_id)
         await this.props.handleDeleteFavorite(id)
-        
     }
 
     render() {
-
         return (
             <div className="search-parent">
                 <h2>Search Page</h2>
-                <div className="dropdown">
-                    <button className="drop-button">Categories</button>
-                    <div className="dropdown-content">
-                        {
-                        this.state.categories.map(category => {
-                                return <span 
-                                onClick={() => this.props.handleCategory(category.name)}>
-                                {category.name}</span>
-                            })
-                        }
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* Line 44 was the border; now Line 65 is the border */}
-
-
-
-
-
-
-
-
-
-
                 <div className="group">
                 {
                     this.props.searchResults.map(oneItem => 
