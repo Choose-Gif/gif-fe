@@ -20,7 +20,8 @@ export default class App extends Component {
   state = { 
     token: localStorage.getItem('TOKEN') || '',
     query: '',
-    searchResults: []
+    searchResults: [],
+    newFavorites: []
   
   }
 
@@ -34,6 +35,8 @@ export default class App extends Component {
     const response = await request
    .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
    this.setState({ searchResults: response.body.data });
+
+   await this.fetchFavorites();
   }
 
   handleCategory = async (category) => {
@@ -51,6 +54,47 @@ export default class App extends Component {
     this.setState({ token: '' })
   }
 
+  //FETCH FAVORITES
+  fetchFavorites = async () => {
+    const response = await request
+      .get('https://choose-gif-be.herokuapp.com/api/favorites/')
+      .set('Authorization', this.state.token)
+
+      this.setState({ newFavorites: response.body })
+  }
+
+  //MAKE A NEW FAVORITE
+  handleFavorite = async (oneItem) => {
+
+    const newFavorite = {
+      giphy_id: oneItem.id,
+      title: oneItem.title
+    };
+
+    await request
+      .post('https://choose-gif-be.herokuapp.com/api/favorites/')
+      .set('Authorization', this.state.token)
+      .send(newFavorite)
+
+      //await request.get('https://choose-gif-be.herokuapp.com/api/favorites/')
+      
+
+    await this.fetchFavorites();
+    
+  }
+
+  handleDeleteFavorite = async (favoriteId) => {
+    try {
+      await request
+        .delete(`https://choose-gif-be.herokuapp.com/api/favorites/${favoriteId}`)
+
+        return
+    } catch(err) {
+      throw err;
+    }
+  }
+
+  
   render() {
     return (
       <div>
@@ -90,6 +134,10 @@ export default class App extends Component {
                 handleInput={this.handleInput} 
                 handleSubmit={this.handleSubmit}
                 handleCategory={this.handleCategory}
+                handleFavorite={this.handleFavorite}
+                fetchFavorites={this.fetchFavorites}
+                newFavorites={this.state.newFavorites}
+                handleDeleteFavorite={this.handleDeleteFavorite}
                 {...routerProps}/>} 
               />
             <Route 

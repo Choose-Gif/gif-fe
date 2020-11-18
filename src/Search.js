@@ -104,9 +104,7 @@ export default class Search extends Component {
 
 
                                 {/* NEW BUTTON STARTS HERE */}
-
-
-                                { this.state.favorite === false &&
+                                {/* { this.state.favorite === false &&
                                 <button
                                  onClick={ () => this.setState({ favorite: true })}
                                  className='favorite-button'>♡</button>
@@ -115,9 +113,25 @@ export default class Search extends Component {
                                 <button
                                  onClick={ () => this.setState({ favorite: false })}
                                  className='favorite-button'>💖</button>
-                                }
-
+                                } */}
                                 {/* NEW BUTTON ENDS HERE */}
+
+
+
+                                {/* {
+                                    !!this.props.searchResults.length && this.props.searchResults.map(oneItem => <li id={oneItem.id}>) */}
+
+
+    {this.props.newFavorites.find( oneFavorite => oneFavorite.giphy_id === oneItem.id)
+    ? <span>💖</span>
+     : <button
+     onClick={() => this.props.handleFavorite(oneItem)}
+     className='favorite-button'>♡</button>
+    }
+
+                                {/* </li>)
+                                } */}
+
 
 
 
