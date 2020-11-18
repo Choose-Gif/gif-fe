@@ -30,8 +30,6 @@ Clearly defined API endpoints with sample responses
 
 Clearly defined database schemas
 
-### LinkedIn
-
 ### `Find us on LinkedIn:`
 - [Franco](https://www.linkedin.com/in/francoortega)
 - [Kevin](https://www.linkedin.com/in/kevinfiero)
