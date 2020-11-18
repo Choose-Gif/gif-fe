@@ -10,11 +10,15 @@ export default class Home extends Component {
         imageUrl: [],
         imageTitle: [],
         copied: false,
+        searchTrendingUrl1: [],
+        searchTrendingUrl2: [],
+        searchTrendingUrl3: [],
     }
 
     componentDidMount = async () => {
         await this.fetchTrending()
-        await this.fetchTrendingList()     
+        await this.fetchTrendingList() 
+        await this.fetchTrendingTerm(this.state.trendingList[0], this.state.trendingList[1], this.state.trendingList[2])   
     }
 
     fetchTrending = async () => {
@@ -40,6 +44,17 @@ export default class Home extends Component {
         }
     }
 
+    fetchTrendingTerm = async (trendingTerm1, trendingTerm2, trendingTerm3) => {
+        const response1 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm1}`)
+        const response2 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm2}`)
+        const response3 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm3}`)
+       await this.setState({ 
+        searchTrendingUrl1: response1.body.data.map( item => item.images.original.url),
+        searchTrendingUrl2: response2.body.data.map( item => item.images.original.url),
+        searchTrendingUrl3: response3.body.data.map( item => item.images.original.url)
+        });
+    }
+    
     render() {
         return (
             <div className="parent-container">
@@ -85,23 +100,22 @@ export default class Home extends Component {
                 </div>
                 <div className="box-group">
                     <div className="box-single">
-                        <img className="box-image" alt={this.state.imageTitle[5]} src={this.state.imageUrl[5]} />
+                        <img className="box-image" alt={this.state.trendingList[0]} src={this.state.searchTrendingUrl1} />
                         <div className="box-text">{this.state.trendingList[0]}</div>
                     </div>
                     <div className="box-single">
-                        <img className="box-image" alt={this.state.imageTitle[4]} src={this.state.imageUrl[4]} />
+                        <img className="box-image" alt={this.state.trendingList[1]} src={this.state.searchTrendingUrl2} />
                         <div className="box-text">{this.state.trendingList[1]}</div>
                     </div>
                     <div className="box-single">
-                        <img className="box-image" alt={this.state.imageTitle[3]} src={this.state.imageUrl[3]} />
-                        <div className="box-text">{this.state.trendingList[2]}</div>
+                        <img className="box-image" alt={this.state.trendingList[2]} src={this.state.searchTrendingUrl3} />                        <div className="box-text">{this.state.trendingList[2]}</div>
                     </div>
                 </div>
-                <div id='trending-terms'>
+                {/* <div id='trending-terms'>
                 {this.state.trendingList.map(oneItem => {
                     return <div key={oneItem} className='trending-item'>#{oneItem}</div>
                 })}
-                </div>
+                </div> */}
             </div>
         )
     }

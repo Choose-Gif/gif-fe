@@ -21,7 +21,6 @@ export default class App extends Component {
     token: localStorage.getItem('TOKEN') || '',
     query: '',
     searchResults: []
-  
   }
 
   handleTokenChange = (myEmail, myToken) => {
@@ -40,7 +39,7 @@ export default class App extends Component {
     const response = await request
    .get(`https://choose-gif-be.herokuapp.com/search?query=${category}`)
    await this.setState({ searchResults: response.body.data, query: '' });
-}
+  }
 
   handleInput = async e => {
     this.setState({ query: e.target.value })
