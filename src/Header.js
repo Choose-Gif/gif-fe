@@ -1,15 +1,38 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './Header.css';
+import request from 'superagent';
 
 export default class Header extends Component {
+    state = {
+        categories: [],
+        subCategories: [],
+        categoryResults: []
+    }
 
+    componentDidMount = async () => {
+        await this.fetchCategories()
+    }
 
-   handleSubmit = async (e) => {
-       e.preventDefault();
-       await this.props.handleSubmit();
-       this.props.history.push('/search');
-   }
+    fetchCategories = async () => {
+        try {
+            const response = await request.get(`https://api.giphy.com/v1/gifs/categories?api_key=YipqcygnSfwA4INWcd6BhsBNrAEPY7AZ`);
+            await this.setState({ categories: response.body.data });
+        } catch(err) {
+            throw err;
+        }
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        await this.props.handleSubmit();
+        this.props.history.push('/search');
+    }
+
+    handleCategory = async (category) => {
+        await this.props.handleCategory(category);
+        this.props.history.push('/search');
+    }
     
     render() {
         return (
@@ -22,6 +45,17 @@ export default class Header extends Component {
                         <button>Submit</button>    
                     </form>
                 </div>
+                <div className="dropdown">
+                    <button className="drop-button">Categories</button>
+                    <div className="dropdown-content">
+                        {
+                        this.state.categories.map(category => {
+                                return <span onClick={() => this.handleCategory(category.name)}>
+                                    {category.name}</span>
+                            })
+                        }
+                </div>
+            </div>
 
                 {/* Header text links (non-button) */}
                 <div className='header-links-div'>
