@@ -3,13 +3,13 @@
 }
 
 .header-div {
-    background-color: #080C0A;
+    background-color: #03060e;
     display: flex;
     justify-content: space-between;
     padding: 1%;
     height: 15vh;
     width: 100vw;
-  }
+}
 
 .header-search-div{
     align-self: center;

@@ -7,7 +7,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background-color: #080C0A;
+  background-color: #03060e;
   color: #D8F3DC;
   font-family: 'Lato', sans-serif;
 }
@@ -19,12 +19,12 @@ a {
 
 button {
   /* background-color: rgba(255, 244, 244, 0.226); */
-  background-color: #1B4332;
-  color: #D8F3DC;
+  background-color: #0B132B;
+  color: white;
   letter-spacing: 0.05em;
   width: 100px;
   height: 30px;
-  /* border: rgba(255, 255, 255, 0.37) 1px solid; */
+  border: 1px outset #414c6d;
   border-radius: 3px;
   box-shadow: 0px 0px 0px #fff;
   margin-left: 4px;
@@ -33,7 +33,7 @@ button {
 }
 
 button:hover {
-  background-color: #74C69D;
+  background-color: #3E92CC;
   text-shadow: 0px 8px 6px rgba(0,0,0,0.9);
   box-shadow: 7px 7px 0px rgba(255, 255, 255, 0.521), -7px -7px 0px rgba(255, 255, 255, 0.521);
   opacity: 1;
@@ -46,7 +46,7 @@ input {
 }
 
 .header-search {
-  background-color: #080C0A;
+  background-color: #03060e;
   color: #3E92CC;
   display: flex;
   justify-content: center;
@@ -62,19 +62,17 @@ input {
 }
 
 .drop-button {
-  font-size: 20px;
-  color: #DAD7CD;
   background-color: #0B132B;
-  border: 1px outset #5BC0BE;
+  border: 1px outset #414c6d;
   cursor: pointer;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
+  width: 30vw;
+  height: 20vh;
   background-color: #0B132B;
-  font-size: 16px;
-  min-width: 180px;
   box-shadow: 0px 5px 10px -5px #A3B18A;
   z-index: 1;
   left: 0;
@@ -82,16 +80,24 @@ input {
 
 .dropdown-content span {
   color: #3E92CC;
-  padding: 12px 16px;
+  padding: 2px;
+  margin: 5px;
+  height: 25px;
   text-decoration: none;
-  display: block;
+  text-transform: capitalize;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #0B132B;
 }
 
-.dropdown-content a:hover {
-  background-color: #354961;
+.dropdown-content span:hover {
+  background-color: rgba(255, 255, 255, 0.521);
+  color: #0B132B;
+  text-transform: capitalize;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
   cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
 }
