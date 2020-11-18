@@ -42,7 +42,7 @@ export default class Header extends Component {
                         <input 
                             value={this.props.query} 
                             onChange={this.props.handleInput}/>    
-                        <button>Submit</button>    
+                        <button>Search</button>    
                     </form>
                 </div>
                 <div className="dropdown">
@@ -54,20 +54,16 @@ export default class Header extends Component {
                                     {category.name}</span>
                             })
                         }
+                    </div>
                 </div>
-            </div>
-
-                {/* Header text links (non-button) */}
                 <div className='header-links-div'>
-                    <Link to='/'>Home</Link>
-                    <Link to='/about'>About Us 👋</Link>
+                    <Link to='/'><button>Home</button></Link>
+                    <Link to='/about'><button>About Us 👋</button></Link>
                 </div>
-
                 {/* Favorites "STAR ICON" (when logged in) */}
                 <div className='favorites-div'>
                     { this.props.token && <Link to='/favorites' className='favorites-link'>🌟</Link> }
                 </div>
-
                 {/* Sign Up/Sign In and Log Out buttons */}
                 <div className='header-sign-div'>
                     { !this.props.token && 
