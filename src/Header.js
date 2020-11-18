@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './Header.css';
 import request from 'superagent';
+import home from './home-icon.png';
+import about from './about-icon.png';
+import heartFull from './heart-full-icon.png';
+import search from './search-sm-icon.png';
 
 export default class Header extends Component {
     state = {
@@ -41,8 +45,8 @@ export default class Header extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <input 
                             value={this.props.query} 
-                            onChange={this.props.handleInput}/>    
-                        <button>Search</button>    
+                            onChange={this.props.handleInput}/>
+                        <button className="sm-button"><img className='icons' alt='search icon' src={search}/> </button>   
                     </form>
                 </div>
                 <div className="dropdown">
@@ -57,12 +61,13 @@ export default class Header extends Component {
                     </div>
                 </div>
                 <div className='header-links-div'>
-                    <Link to='/'><button>Home</button></Link>
-                    <Link to='/about'><button>About Us 👋</button></Link>
+                    {/* <Link to='/'><button>Home</button></Link> */}
+                    <Link to='/'><img className='icons' alt='' src={home}/></Link>
+                    <Link to='/about'><img className='icons' alt='' src={about}/></Link>
                 </div>
                 {/* Favorites "STAR ICON" (when logged in) */}
                 <div className='favorites-div'>
-                    { this.props.token && <Link to='/favorites' className='favorites-link'>🌟</Link> }
+                    { this.props.token && <Link to='/favorites' className='favorites-link'><img className='icons' alt='' src={heartFull}/></Link> }
                 </div>
                 {/* Sign Up/Sign In and Log Out buttons */}
                 <div className='header-sign-div'>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import heartEmpty from './heart-empty-icon.png';
+import heartFull from './heart-full-icon.png';
 import './Search.css';
 
 export default class Search extends Component {
@@ -29,15 +31,18 @@ export default class Search extends Component {
 
                                 {this.props.newFavorites.find( oneFavorite => oneFavorite.giphy_id === oneItem.id)
                                 ? <button 
-                                    onClick={() => this.handleClickDeleteFavorite(oneItem.id)}>💖</button>
+                                    onClick={() => this.handleClickDeleteFavorite(oneItem.id)} className="sm-button">
+                                        <img className='icons' alt='favorited gif' src={heartFull}/>
+                                    </button>
                                 : <button
-                                    onClick={() => this.props.handleFavorite(oneItem)}
-                                    className="favorite-button">♡</button>
+                                    onClick={() => this.props.handleFavorite(oneItem)} className="sm-button">
+                                        <img className='icons' alt='gif not favorited' src={heartEmpty}/>
+                                    </button>
                                     }
 
                                 <CopyToClipboard text={oneItem.images.original.url}
                                 onCopy={() => this.setState({copied: true})}>
-                                <button className="item-button">Copy to Clipboard</button>
+                                <button className="item-button">Copy URL</button>
                                 </CopyToClipboard>
                                 </p>
                             </div>

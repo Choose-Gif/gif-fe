@@ -23,6 +23,24 @@
     /* margin: 5% 5%; */
 }
 
+.icons {
+    margin-left: 5px;
+}
+
+.icons:hover {
+    background-color: #3E92CC;
+    border-radius: 30px;
+    transform: translate3d(0px, 0px, 0px);
+    transition: all 0.4s ease 0s;
+}
+
+.sm-button {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .favorites-div {
     height: 50%;
     width: 10%;
