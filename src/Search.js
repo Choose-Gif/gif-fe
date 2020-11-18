@@ -25,7 +25,14 @@ export default class Search extends Component {
         } catch(err) {
             throw err;
         }
-    }      
+    }
+
+    //CLICK HANDLER TO DELETE FAVORITE
+    handleClickDeleteFavorite = async (id) => {
+        // console.log(this.props.newFavorite.giphy_id)
+        await this.props.handleDeleteFavorite(id)
+        
+    }
 
     render() {
 
@@ -118,21 +125,14 @@ export default class Search extends Component {
 
 
 
-                                {/* {
-                                    !!this.props.searchResults.length && this.props.searchResults.map(oneItem => <li id={oneItem.id}>) */}
-
-
     {this.props.newFavorites.find( oneFavorite => oneFavorite.giphy_id === oneItem.id)
-    ? <span>💖</span>
+    ? <button
+        onClick={() => this.handleClickDeleteFavorite(oneItem.id)}
+        >💖</button>
      : <button
      onClick={() => this.props.handleFavorite(oneItem)}
      className='favorite-button'>♡</button>
     }
-
-                                {/* </li>)
-                                } */}
-
-
 
 
                                 <CopyToClipboard text={oneItem.images.original.url}
@@ -149,10 +149,3 @@ export default class Search extends Component {
         )
     }
 }
-
-
-
-// CHANGES MADE ABOVE MY ZONE
-// npm install reactjs-popup --save
-// Line 4: import Popup from 'reactjs-popup';
-// Line 10: Add "favorite: false" to state.

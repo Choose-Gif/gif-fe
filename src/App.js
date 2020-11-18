@@ -22,7 +22,6 @@ export default class App extends Component {
     query: '',
     searchResults: [],
     newFavorites: []
-  
   }
 
   handleTokenChange = (myEmail, myToken) => {
@@ -35,7 +34,7 @@ export default class App extends Component {
     const response = await request
    .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
    this.setState({ searchResults: response.body.data });
-
+    //KEEP THE LINE BELOW THIS COMMENT
    await this.fetchFavorites();
   }
 
@@ -53,6 +52,14 @@ export default class App extends Component {
     localStorage.setItem('TOKEN', '');
     this.setState({ token: '' })
   }
+
+
+
+
+
+
+
+
 
   //FETCH FAVORITES
   fetchFavorites = async () => {
@@ -76,23 +83,28 @@ export default class App extends Component {
       .set('Authorization', this.state.token)
       .send(newFavorite)
 
-      //await request.get('https://choose-gif-be.herokuapp.com/api/favorites/')
-      
-
     await this.fetchFavorites();
-    
   }
 
+  //DELETE FAVORITE
   handleDeleteFavorite = async (favoriteId) => {
     try {
       await request
         .delete(`https://choose-gif-be.herokuapp.com/api/favorites/${favoriteId}`)
+        .set('Authorization', this.state.token)
 
-        return
+        await this.fetchFavorites();
+
     } catch(err) {
       throw err;
     }
   }
+
+
+
+
+
+
 
   
   render() {
