@@ -49,7 +49,6 @@ export default class Home extends Component {
         const response1 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm1}`)
         const response2 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm2}`)
         const response3 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm3}`)
-        console.log(response1)
        await this.setState({ 
         searchTrendingUrl1: response1.body.data.map( item => item.images.original.url),
         searchTrendingUrl2: response2.body.data.map( item => item.images.original.url),
