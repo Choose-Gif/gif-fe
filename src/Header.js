@@ -50,7 +50,7 @@ export default class Header extends Component {
                     <div className="dropdown-content">
                         {
                         this.state.categories.map(category => {
-                                return <span onClick={() => this.handleCategory(category.name)}>
+                                return <span key={category.name} onClick={() => this.handleCategory(category.name)}>
                                     {category.name}</span>
                             })
                         }
