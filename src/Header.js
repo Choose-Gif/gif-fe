@@ -5,26 +5,22 @@ import './Header.css';
 export default class Header extends Component {
 
 
-    // handleLogOut = () => {
-    //     localStorage.setItem('TOKEN', '');
-    //     this.setState({ token: '' })
-    // }
-
-    // fakeHandleSignIn = () => {
-    //     this.setState({ token: 'token' })
-    // }
+   handleSubmit = async (e) => {
+       e.preventDefault();
+       await this.props.handleSubmit();
+       this.props.history.push('/search');
+   }
     
     render() {
         return (
             <div className='header-div'>
-
-                {/* Search Button links to Search.js */}
                 <div className='header-search-div'>
-                <Link to='/search'>
-                    <button className='header-search-button'>
-                        Search
-                    </button>
-                </Link>
+                    <form onSubmit={this.handleSubmit}>
+                        <input 
+                            value={this.props.query} 
+                            onChange={this.props.handleInput}/>    
+                        <button>Submit</button>    
+                    </form>
                 </div>
 
                 {/* Header text links (non-button) */}

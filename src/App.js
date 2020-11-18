@@ -30,7 +30,6 @@ export default class App extends Component {
   }
 
   handleSubmit = async e => {
-    e.preventDefault();
     const response = await request
    .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
    this.setState({ searchResults: response.body.data });
@@ -55,9 +54,16 @@ export default class App extends Component {
     return (
       <div>
         <Router>
-        <Header
-        token={this.state.token}
-        handleLogOut={this.handleLogOut}/>
+        <Route render={(routerProps) => <Header         
+            token={this.state.token}
+            handleLogOut={this.handleLogOut}
+            handleSubmit={this.handleSubmit}
+            handleTokenChange={this.handleTokenChange} 
+            handleInput={this.handleInput}
+                {...routerProps} />} 
+              />
+
+        
           {/* <ul>
             { this.state.token && <div>welcome, user!!!</div> }
             { this.state.token && <Link to="/todos"><div>todos</div></Link> }
@@ -66,6 +72,7 @@ export default class App extends Component {
             <button onClick={() => this.handleTokenChange('')}>logout</button>
           </ul> */}
           <Switch>
+
             <Route exact path='/signin' render={(routerProps) => <SignIn 
                 handleTokenChange={this.handleTokenChange} 
                 {...routerProps} />} 
