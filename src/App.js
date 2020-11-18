@@ -143,6 +143,7 @@ export default class App extends Component {
             exact path='/' 
               render={(routerProps) => <Home 
                 handleTokenChange={this.handleTokenChange} 
+                handleCategory={this.handleCategory}
                 {...routerProps}/>} 
               />
             <PrivateRoute 

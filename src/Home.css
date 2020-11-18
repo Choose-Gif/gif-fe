@@ -33,6 +33,7 @@ body {
   width: 100%;
   object-fit: contain;
   filter: brightness(50%);
+  cursor: pointer;
 }
 
 .box-text {
@@ -76,7 +77,7 @@ body {
     /* border: 1px solid #CCC; */
     margin: 80px;
     perspective: 400px;
-    cursor: pointer;
+    cursor: copy;
   }
   
 .cube-images {
