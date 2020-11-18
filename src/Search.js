@@ -38,15 +38,7 @@ export default class Search extends Component {
 
         return (
             <div className="search-parent">
-                <div className="header-search" >
-                    <h2>Search Page</h2>
-                    <form onSubmit={this.props.handleSubmit}>
-                        <input 
-                            value={this.props.query} 
-                            onChange={this.props.handleInput}/>
-                        <button>Submit</button>
-                    </form>
-                </div>
+                <h2>Search Page</h2>
                 <div className="dropdown">
                     <button className="drop-button">Categories</button>
                     <div className="dropdown-content">
@@ -57,8 +49,8 @@ export default class Search extends Component {
                                 {category.name}</span>
                             })
                         }
-                    </div>
                 </div>
+            </div>
 
 
 
