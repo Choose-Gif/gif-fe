@@ -13,6 +13,7 @@ export default class Home extends Component {
         searchTrendingUrl1: [],
         searchTrendingUrl2: [],
         searchTrendingUrl3: [],
+        searchTrendingResults1: [],
     }
 
     componentDidMount = async () => {
@@ -48,13 +49,20 @@ export default class Home extends Component {
         const response1 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm1}`)
         const response2 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm2}`)
         const response3 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm3}`)
+        console.log(response1)
        await this.setState({ 
         searchTrendingUrl1: response1.body.data.map( item => item.images.original.url),
         searchTrendingUrl2: response2.body.data.map( item => item.images.original.url),
-        searchTrendingUrl3: response3.body.data.map( item => item.images.original.url)
+        searchTrendingUrl3: response3.body.data.map( item => item.images.original.url),
+        searchTrendingResults1: response1.body.data
         });
     }
     
+    handleCategory = async (category) => {
+        await this.props.handleCategory(category);
+        this.props.history.push('/search');
+    }
+
     render() {
         return (
             <div className="parent-container">
@@ -100,15 +108,28 @@ export default class Home extends Component {
                 </div>
                 <div className="box-group">
                     <div className="box-single">
-                        <img className="box-image" alt={this.state.trendingList[0]} src={this.state.searchTrendingUrl1} />
+                        <img 
+                        onClick={() => this.handleCategory(this.state.trendingList[0])} 
+                        className="box-image" 
+                        alt={this.state.trendingList[0]} 
+                        src={this.state.searchTrendingUrl1} />
                         <div className="box-text">{this.state.trendingList[0]}</div>
                     </div>
                     <div className="box-single">
-                        <img className="box-image" alt={this.state.trendingList[1]} src={this.state.searchTrendingUrl2} />
+                        <img 
+                        onClick={() => this.handleCategory(this.state.trendingList[1])}
+                        className="box-image" 
+                        alt={this.state.trendingList[1]} 
+                        src={this.state.searchTrendingUrl2} />
                         <div className="box-text">{this.state.trendingList[1]}</div>
                     </div>
                     <div className="box-single">
-                        <img className="box-image" alt={this.state.trendingList[2]} src={this.state.searchTrendingUrl3} />                        <div className="box-text">{this.state.trendingList[2]}</div>
+                        <img 
+                        onClick={() => this.handleCategory(this.state.trendingList[2])}
+                        className="box-image" 
+                        alt={this.state.trendingList[2]} 
+                        src={this.state.searchTrendingUrl3} />
+                        <div className="box-text">{this.state.trendingList[2]}</div>
                     </div>
                 </div>
                 {/* <div id='trending-terms'>
