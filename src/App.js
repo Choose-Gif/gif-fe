@@ -20,7 +20,8 @@ export default class App extends Component {
   state = { 
     token: localStorage.getItem('TOKEN') || '',
     query: '',
-    searchResults: []
+    searchResults: [],
+    newFavorites: []
   }
 
   handleTokenChange = (myEmail, myToken) => {
@@ -32,6 +33,8 @@ export default class App extends Component {
     const response = await request
    .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
    this.setState({ searchResults: response.body.data });
+    //KEEP THE LINE BELOW THIS COMMENT
+   await this.fetchFavorites();
   }
 
   handleCategory = async (category) => {
@@ -49,6 +52,45 @@ export default class App extends Component {
     this.setState({ token: '' })
   }
 
+  //FETCH FAVORITES
+  fetchFavorites = async () => {
+    const response = await request
+      .get('https://choose-gif-be.herokuapp.com/api/favorites/')
+      .set('Authorization', this.state.token)
+
+      this.setState({ newFavorites: response.body })
+  }
+
+  //MAKE A NEW FAVORITE
+  handleFavorite = async (oneItem) => {
+
+    const newFavorite = {
+      giphy_id: oneItem.id,
+      title: oneItem.title
+    };
+
+    await request
+      .post('https://choose-gif-be.herokuapp.com/api/favorites/')
+      .set('Authorization', this.state.token)
+      .send(newFavorite)
+
+    await this.fetchFavorites();
+  }
+
+  //DELETE FAVORITE
+  handleDeleteFavorite = async (favoriteId) => {
+    try {
+      await request
+        .delete(`https://choose-gif-be.herokuapp.com/api/favorites/${favoriteId}`)
+        .set('Authorization', this.state.token)
+
+        await this.fetchFavorites();
+
+    } catch(err) {
+      throw err;
+    }
+  }
+  
   render() {
     return (
       <div>
@@ -61,15 +103,6 @@ export default class App extends Component {
             handleInput={this.handleInput}
                 {...routerProps} />} 
               />
-
-        
-          {/* <ul>
-            { this.state.token && <div>welcome, user!!!</div> }
-            { this.state.token && <Link to="/todos"><div>todos</div></Link> }
-            <Link to="/signin"><div>log in</div></Link>
-            <Link to="/signup"><div>sign up</div></Link>
-            <button onClick={() => this.handleTokenChange('')}>logout</button>
-          </ul> */}
           <Switch>
 
             <Route exact path='/signin' render={(routerProps) => <SignIn 
@@ -96,6 +129,10 @@ export default class App extends Component {
                 handleInput={this.handleInput} 
                 handleSubmit={this.handleSubmit}
                 handleCategory={this.handleCategory}
+                handleFavorite={this.handleFavorite}
+                fetchFavorites={this.fetchFavorites}
+                newFavorites={this.state.newFavorites}
+                handleDeleteFavorite={this.handleDeleteFavorite}
                 {...routerProps}/>} 
               />
             <Route 

@@ -25,7 +25,14 @@ export default class Search extends Component {
         } catch(err) {
             throw err;
         }
-    }      
+    }
+
+    //CLICK HANDLER TO DELETE FAVORITE
+    handleClickDeleteFavorite = async (id) => {
+        // console.log(this.props.newFavorite.giphy_id)
+        await this.props.handleDeleteFavorite(id)
+        
+    }
 
     render() {
 
@@ -96,9 +103,7 @@ export default class Search extends Component {
 
 
                                 {/* NEW BUTTON STARTS HERE */}
-
-
-                                { this.state.favorite === false &&
+                                {/* { this.state.favorite === false &&
                                 <button
                                  onClick={ () => this.setState({ favorite: true })}
                                  className='favorite-button'>♡</button>
@@ -107,10 +112,19 @@ export default class Search extends Component {
                                 <button
                                  onClick={ () => this.setState({ favorite: false })}
                                  className='favorite-button'>💖</button>
-                                }
-
+                                } */}
                                 {/* NEW BUTTON ENDS HERE */}
 
+
+
+    {this.props.newFavorites.find( oneFavorite => oneFavorite.giphy_id === oneItem.id)
+    ? <button
+        onClick={() => this.handleClickDeleteFavorite(oneItem.id)}
+        >💖</button>
+     : <button
+     onClick={() => this.props.handleFavorite(oneItem)}
+     className='favorite-button'>♡</button>
+    }
 
 
                                 <CopyToClipboard text={oneItem.images.original.url}
@@ -127,10 +141,3 @@ export default class Search extends Component {
         )
     }
 }
-
-
-
-// CHANGES MADE ABOVE MY ZONE
-// npm install reactjs-popup --save
-// Line 4: import Popup from 'reactjs-popup';
-// Line 10: Add "favorite: false" to state.
