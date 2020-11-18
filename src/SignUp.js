@@ -40,6 +40,7 @@ export default class SignUp extends Component {
                             <input
                              onChange={(e) => {this.setState({ email: e.target.value })}}
                              value={this.state.email}
+                             type="email"
                              />
                         </label>
                         <label>

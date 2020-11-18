@@ -1,21 +1,7 @@
-* {
-    box-sizing: border-box;
-  }
-
-  input {
-      margin: 5px 5px;
-  }
-
-  button {
-      align-self: center;
-  }
-
   .signup-div {
       display: flex;
-      /* flex-direction: column; */
       align-items: center;
       justify-content: center;
-
   }
 
   .signup-content {
@@ -23,11 +9,9 @@
   }
 
   .signup-form {
-      /* border: solid 2px blue; */
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      /* justify-content: flex-end; */
       margin-top: 20%;
       width: fit-content;
   }
