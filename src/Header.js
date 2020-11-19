@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './Header.css';
 import request from 'superagent';
-import home from './home-icon.png';
-import about from './about-icon.png';
 import heartFull from './heart-full-icon.png';
 import search from './search-sm-icon.png';
 
