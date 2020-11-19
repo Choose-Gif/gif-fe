@@ -41,12 +41,18 @@ export default class Header extends Component {
     render() {
         return (
             <div className='header-div'>
+                                <div className='header-links-div'>
+                    {/* <Link to='/'><button>Home</button></Link> */}
+                    <Link to='/'><img className='icons' alt='' src={home}/></Link>
+                    <Link to='/about'><img className='icons' alt='' src={about}/></Link>
+                </div>
                 <div className='header-search-div'>
                     <form onSubmit={this.handleSubmit}>
                         <input 
                             value={this.props.query} 
                             onChange={this.props.handleInput}/>
-                        <button className="sm-button"><img className='icons' alt='search icon' src={search}/> </button>   
+                        <button 
+                        className="sm-button test-button"><img className='icons' alt='search icon' src={search}/> </button>   
                     </form>
                 </div>
                 <div className="dropdown">
@@ -60,11 +66,7 @@ export default class Header extends Component {
                         }
                     </div>
                 </div>
-                <div className='header-links-div'>
-                    {/* <Link to='/'><button>Home</button></Link> */}
-                    <Link to='/'><img className='icons' alt='' src={home}/></Link>
-                    <Link to='/about'><img className='icons' alt='' src={about}/></Link>
-                </div>
+
                 {/* Favorites "STAR ICON" (when logged in) */}
                 <div className='favorites-div'>
                     { this.props.token && <Link to='/favorites' className='favorites-link'><img className='icons' alt='' src={heartFull}/></Link> }
