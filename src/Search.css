@@ -6,7 +6,6 @@
   }
 
 .individual {
-    /* border: 1px solid #fffaff3b; */
     border-radius: 15px;
     display: flex;
     justify-content: center;
@@ -26,4 +25,8 @@
 
 .item-text {
     color: #3E92CC;
+}
+
+.heart-icons {
+    cursor: pointer;
 }

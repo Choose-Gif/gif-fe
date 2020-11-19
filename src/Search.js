@@ -30,15 +30,15 @@ export default class Search extends Component {
                                 <input className="item-input" value={oneItem.images.original.url} type="hidden" />
 
                                 {this.props.newFavorites.find( oneFavorite => oneFavorite.giphy_id === oneItem.id)
-                                ? <button 
-                                    onClick={() => this.handleClickDeleteFavorite(oneItem.id)} className="sm-button">
-                                        <img className='icons' alt='favorited gif' src={heartFull}/>
-                                    </button>
-                                : <button
-                                    onClick={() => this.props.handleFavorite(oneItem)} className="sm-button">
-                                        <img className='icons' alt='gif not favorited' src={heartEmpty}/>
-                                    </button>
-                                    }
+                                ?  <img 
+                                    alt='favorited gif' 
+                                    src={heartFull}
+                                    onClick={() => this.handleClickDeleteFavorite(oneItem.id)} className="heart-icons"/>
+                                : <img 
+                                    alt='gif not favorited' 
+                                    src={heartEmpty}
+                                    onClick={() => this.props.handleFavorite(oneItem)} className="heart-icons"/>
+                                }
 
                                 <CopyToClipboard text={oneItem.images.original.url}
                                 onCopy={() => this.setState({copied: true})}>
