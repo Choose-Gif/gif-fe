@@ -18,9 +18,9 @@ export default class Search extends Component {
     }
 
     render() {
-        console.log(this.props.token)
         return (
             <div className="search-parent">
+                {this.props.searchResults.length > 0 ?
                 <div className="group">
                 {
                     this.props.searchResults.map(oneItem => 
@@ -58,6 +58,8 @@ export default class Search extends Component {
                     )
                 }
                 </div>
+                : <div className='center' id='no-results'>No Results!</div>
+                }
             </div>
         )
     }
