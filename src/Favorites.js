@@ -52,6 +52,7 @@ export default class Favorites extends Component {
     render() {
         return (
             <div className="search-parent">
+                <h1 className='fav-header'>Favorites</h1>
                 <div className="group">
                 { (this.state.currentFavorites.data !== undefined) ?
                     this.state.currentFavorites.data.map(oneItem => 
