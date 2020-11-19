@@ -40,13 +40,16 @@ export default class SignIn extends Component {
         const { err } = this.state;
         return (
             <div className='signup-div'>
-                <div className='signup-content'>
+                <div className='signup-text-div'>
+                    <div className='signup-email-text'>Email:</div>
+                    <div>Password:</div>
+                </div>
+                <div>
                     <form
                      onSubmit={this.handleSubmitSignIn}
                      className='signup-form'>
                         <label>
                             {err && <div style={{ color: 'red'}}>{err}</div>}
-                            Email:
                             <input
                              onChange={(e) => {this.setState({ email: e.target.value })}}
                              value={this.state.email}
@@ -54,7 +57,6 @@ export default class SignIn extends Component {
                              />
                         </label>
                         <label>
-                            Password:
                             <input
                              onChange={(e) => {this.setState({ password: e.target.value })}}
                              value={this.state.password}
