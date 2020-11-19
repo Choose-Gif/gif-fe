@@ -21,8 +21,6 @@ export default class Favorites extends Component {
         this.state.newFavorites.forEach(element => {
             favoritesList += ',' + element.giphy_id;
         });
-        favoritesList = favoritesList.substring(1);
-
         if(favoritesList !==''){
             await this.fetchGiphyFavorites(favoritesList)
             await this.fetchFavorites()
