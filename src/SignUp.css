@@ -5,13 +5,19 @@ body {
 
 .signup-div {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
   }
 
-.signup-content {
-    text-align: center;
+  .signup-text-div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+.signup-email-text {
+  padding-bottom: 10px;
 }
 
 .signup-form {
@@ -19,18 +25,4 @@ body {
       flex-direction: column;
       align-items: flex-end;
       margin-top: 20%;
-      width: fit-content;
 }
-
-.signup-button {
-      position: relative;
-      left: 8vw;
-}
-
-  @media (min-width: 600px) {
-    .signup-button {
-        position: relative;
-        left: 5.2vw;
-    }
-  }
-
