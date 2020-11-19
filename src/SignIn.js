@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import request from 'superagent';
 import './SignUp.css';
 
@@ -63,10 +64,22 @@ export default class SignIn extends Component {
                              type="password"
                             />
                         </label>
-                        <button>
+                        <button className='signup-button'>
                             Sign In
                         </button>
                     </form>
+                </div>
+                <div className='go-to-signup-div'>
+                    <p>
+                        If you are not a user, you can sign up here:
+                    </p>
+                
+                    <Link to='/signup'>
+                            <button className='header-signup-button go-to-signup-button'>
+                                Sign Up
+                            </button>
+                        </Link>
+
                 </div>
             </div>
         )
