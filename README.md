@@ -16,19 +16,37 @@ Semantic versioning, beginning with version 1.0.0 and incremented as changes are
 
 ### `Libraries, Frameworks, and Packages` (Oh my!)
 
-A list of any libraries, frameworks, or packages that your application requires in order to properly function
+Choose Gif is built using React framework with scripts that include React Router Dom, React Copy to Clipboard, and Superagent.
 
 ### `User Instructions`
 
-Instructions that the user may need to follow in order to get your application up and running on their own computer
+You may access the live site which is hosted on [Netlify](https://choose-gif-fe.netlify.app).
 
 ### `API Endpoint Examples`
 
-Clearly defined API endpoints with sample responses
+We have several endpoints users can navigate through. A few examples include:
+- /search
+- /trending
+- /api/favorites
+
+The favorites endpoint is one of our protected routes where only a user with the corresponding token will have access.
 
 ### `Database Schemas`
 
-Clearly defined database schemas
+Our app consists of two database schemas:
+
+    CREATE TABLE users (
+        id SERIAL PRIMARY KEY,
+        email VARCHAR(256) NOT NULL,
+        hash VARCHAR(512) NOT NULL
+    );
+
+    CREATE TABLE favorites (
+        id SERIAL PRIMARY KEY NOT NULL,
+        giphy_id VARCHAR(256) NOT NULL,
+        title VARCHAR(256) NOT NULL,
+        owner_id INTEGER NOT NULL REFERENCES users(id)
+
 
 ### `Find us on LinkedIn:`
 - [Franco](https://www.linkedin.com/in/francoortega)
