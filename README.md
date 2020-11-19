@@ -8,7 +8,7 @@ Choose Gif uses the [Giphy](http://giphy.com) API to gather raw data, manipulate
 
 ### `Problem Domain`
 
-The overall problem domain and how the project solves those problems.
+Our app is a lightweight version of the Giphy website that allows users to save favorite gifs and copy gif URLs to share with their friends.  The app is compatible with mobile, so users can use it on the go.
 
 ### `Semantic Versioning`
 
