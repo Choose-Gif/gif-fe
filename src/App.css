@@ -54,6 +54,16 @@ input {
   flex-wrap: wrap;
 }
 
+/* COMMENTED OUT PREVIOUS CODE */
+/* .dropdown {
+  position: relative; */
+  /* display: inline-block; */
+  /* float: right;
+  left: 10px; */
+  /* top: 3vh; */
+  /* align-self: center;
+} */
+
 .dropdown {
   position: relative;
   /* display: inline-block; */
@@ -61,14 +71,29 @@ input {
   /* left: 10px; */
   /* top: 3vh; */
   align-self: center;
-  border: solid 1px yellow;
+  position: relative;
+  right: 2vw;
+  /* border: solid 1px yellow; */
 }
+
 
 .drop-button {
   background-color: #0B132B;
   border: 1px outset #414c6d;
   cursor: pointer;
 }
+
+/* COMMENTED OUT PREVIOUS CODE */
+/* .dropdown-content {
+  display: none;
+  position: absolute;
+  width: 30vw;
+  height: 60vh;
+  background-color: #0B132B;
+  box-shadow: 0px 5px 10px -5px #A3B18A;
+  z-index: 1;
+  left: 0;
+} */
 
 .dropdown-content {
   display: none;
@@ -80,6 +105,7 @@ input {
   z-index: 1;
   left: 0;
 }
+
 
 .dropdown-content span {
   color: #3E92CC;
@@ -115,12 +141,22 @@ input {
   align-self: center;
 }
 
+/* COMMENTED OUT PREVIOUS CODE */
+/* .drop-button-m {
+  background-color: #0B132B;
+  border: 1px outset #414c6d;
+  cursor: pointer;
+} */
+
 .drop-button-m {
   background-color: #0B132B;
   border: 1px outset #414c6d;
   cursor: pointer;
-  border: solid 1px silver;
+  position: relative;
+  left: 2vw;
+  /* border: solid 1px silver; */
 }
+
 
 .dropdown-content-m {
   display: none;
@@ -161,7 +197,6 @@ input {
 
 
 
-
 @media (min-width: 600px) {
   .dropdown-content {
     display: none;
@@ -176,4 +211,6 @@ input {
   
 
 }
+
+
 
