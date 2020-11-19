@@ -74,7 +74,7 @@ export default class Favorites extends Component {
 
                                 <CopyToClipboard text={oneItem.images.original.url}
                                 onCopy={() => this.setState({copied: true})}>
-                                <button className="item-button">Copy to Clipboard</button>
+                                <button className="item-button">Copy URL</button>
                                 </CopyToClipboard>
                                 </p>
                             </div>
