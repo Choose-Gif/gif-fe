@@ -78,7 +78,7 @@ export default class Favorites extends Component {
                             </div>
                         </div>
                     )
-                    : <div>'loading'</div>
+                    : <div></div>
                 }
                 </div>
             </div>
