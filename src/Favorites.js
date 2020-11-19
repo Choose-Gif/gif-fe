@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import request from 'superagent';
+import heartEmpty from './heart-empty-icon.png';
+import heartFull from './heart-full-icon.png';
 
 export default class Favorites extends Component {
     
-
     state = {
         value: '',
         copied: false,
@@ -25,9 +26,7 @@ export default class Favorites extends Component {
         if(favoritesList !==''){
             await this.fetchGiphyFavorites(favoritesList)
             await this.fetchFavorites()
-
         }
-
     }
 
     fetchFavorites = async () => {
@@ -64,10 +63,14 @@ export default class Favorites extends Component {
 
                                 {this.state.newFavorites.find( oneFavorite => oneFavorite.giphy_id === oneItem.id)
                                 ? <button 
-                                    onClick={() => this.handleClickDeleteFavorite(oneItem.id)}>💖</button>
+                                    onClick={() => this.handleClickDeleteFavorite(oneItem.id)}>
+                                        <img className='icons' alt='favorited gif' src={heartFull}/>
+                                    </button>
                                 : <button
                                     onClick={() => this.props.handleFavorite(oneItem)}
-                                    className="favorite-button">♡</button>
+                                    className="favorite-button">
+                                        <img className='icons' alt='gif not favorited' src={heartEmpty}/>
+                                    </button>
                                     }
 
                                 <CopyToClipboard text={oneItem.images.original.url}
@@ -78,7 +81,7 @@ export default class Favorites extends Component {
                             </div>
                         </div>
                     )
-                    : <div>'loading'</div>
+                    : <div><p>No favorites found</p></div>
                 }
                 </div>
             </div>

@@ -41,11 +41,10 @@ export default class Header extends Component {
     render() {
         return (
             <div className='header-div'>
-                                <div className='header-links-div'>
-                    {/* <Link to='/'><button>Home</button></Link> */}
+                {/* <div className='header-links-div'>
                     <Link to='/'><img className='icons' alt='' src={home}/></Link>
                     <Link to='/about'><img className='icons' alt='' src={about}/></Link>
-                </div>
+                </div> */}
                 <div className='header-search-div'>
                     <form onSubmit={this.handleSubmit}>
                         <input 
@@ -66,41 +65,31 @@ export default class Header extends Component {
                         }
                     </div>
                 </div>
-
-                {/* Favorites "STAR ICON" (when logged in) */}
-                <div className='favorites-div'>
-                    { this.props.token && <Link to='/favorites' className='favorites-link'><img className='icons' alt='' src={heartFull}/></Link> }
-                </div>
-                {/* Sign Up/Sign In and Log Out buttons */}
-                <div className='header-sign-div'>
-                    { !this.props.token && 
-                        <Link to='/signup'>
-                            <button className='header-signup-button'>
-                                Sign Up
-                            </button>
-                        </Link>
-                    }
-                    { !this.props.token && 
-                        <Link to='/signin'>
-                            <button
-                            // onClick={this.fakeHandleSignIn}
-                            className='header-signin-button'>
-                                Sign In
-                            </button>
-                        </Link>
-                    }
-                    <div className='header-logout-div'>
-                    { this.props.token &&
-                    <Link to='/'>
-                        <button
-                        onClick={this.props.handleLogOut}
-                        className='header-logout-button'>
+                <div className="dropdown-m">
+                    <button className="drop-button-m">Menu</button>
+                    <div className="dropdown-content-m">
+                    { this.props.token 
+                    ?
+                        <>
+                        <span><Link to='/'>Home</Link></span>
+                        <span><Link to='/favorites'>My <img className='icons' alt='' src={heartFull}/></Link></span>
+                        <span >
+                            <Link to='/' onClick={this.props.handleLogOut}>
                             Log Out
-                        </button>
-                    </Link>
+                            </Link>
+                        </span>
+                        <span><Link to='/about'>About</Link></span>
+                        </>
+                        :
+                        <>
+                        <span><Link to='/'>Home</Link></span>
+                        <span ><Link to='/signin'>Sign In</Link></span>
+                        <span><Link to='/signup'>Sign Up</Link></span>
+                        <span><Link to='/about'>About</Link></span>
+                        </>
                     }
+                    </div>
                 </div>
-            </div>
         </div>
         )
     }
