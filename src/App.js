@@ -137,7 +137,7 @@ export default class App extends Component {
             exact path='/search' 
               render={(routerProps) => <Search 
                 handleTokenChange={this.handleTokenChange} 
-                searchResults = {this.state.searchResults}
+                searchResults={this.state.searchResults}
                 handleInput={this.handleInput} 
                 handleSubmit={this.handleSubmit}
                 handleCategory={this.handleCategory}
@@ -145,6 +145,7 @@ export default class App extends Component {
                 fetchFavorites={this.fetchFavorites}
                 newFavorites={this.state.newFavorites}
                 handleDeleteFavorite={this.handleDeleteFavorite}
+                token={this.state.token}
                 {...routerProps}/>} 
               />
             <Route 

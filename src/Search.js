@@ -18,6 +18,7 @@ export default class Search extends Component {
     }
 
     render() {
+        console.log(this.props.token)
         return (
             <div className="search-parent">
                 <div className="group">
@@ -34,12 +35,19 @@ export default class Search extends Component {
                                     alt='favorited gif' 
                                     src={heartFull}
                                     onClick={() => this.handleClickDeleteFavorite(oneItem.id)} className="heart-icons"/>
-                                : <img 
+                                : <div className="tooltip">
+                                    <img 
                                     alt='gif not favorited' 
                                     src={heartEmpty}
                                     onClick={() => this.props.handleFavorite(oneItem)} className="heart-icons"/>
-                                }
 
+                                    {this.props.token === '' 
+                                    ?
+                                    <span className="tool-tip-text">Sign In to Save</span>
+                                    : <span></span>}
+
+                                    </div>
+                                }
                                 <CopyToClipboard text={oneItem.images.original.url}
                                 onCopy={() => this.setState({copied: true})}>
                                 <button className="item-button">Copy URL</button>
