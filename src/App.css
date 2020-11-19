@@ -56,9 +56,11 @@ input {
 
 .dropdown {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
   float: left;
   left: 10px;
+  /* top: 3vh; */
+  align-self: center;
 }
 
 .drop-button {

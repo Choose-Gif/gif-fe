@@ -9,9 +9,12 @@
     padding: 1%;
     height: 15vh;
     width: 100vw;
+    border: solid 1px white;
 }
 
 .header-search-div{
+    display: flex;
+    flex-direction: row;
     align-self: center;
 }
 
@@ -36,9 +39,9 @@
 
 .sm-button {
     width: 40px;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .favorites-div {
@@ -62,4 +65,13 @@
     align-self: center;
     justify-content: flex-end;
     width: 32%;
+}
+
+.test-button {
+    position: relative;
+    /* display: inline-block; */
+    /* float: left; */
+    /* left: 1vw; */
+    /* top: 3vh; */
+    align-self: center;
 }
