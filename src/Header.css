@@ -73,21 +73,9 @@
     margin: 0 10px;
 }
 
-
-/* I think this className no longer exists */
-/* .header-sign-div {
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-    justify-content: flex-end;
-    width: 32%;
-} */
-
-
 .sm-adjust-button {
     position: relative;
     display: inline-block;
-    /* float: left; */
     left: -1vw;
     top: 0.4vh;
     align-self: center;
@@ -99,8 +87,6 @@
     justify-content: center;
 }
 
-
-
 @media (min-width: 500px) {
     .header-search-div{
         display: flex;
@@ -109,13 +95,11 @@
         width: fit-content;
         position: relative;
         left: 1vw;
-        /* border: solid 1px white; */
     }
 
     .sm-adjust-button {
         position: relative;
         display: inline-block;
-        /* float: left; */
         left: 0vw;
         top: 0.4vh;
         align-self: center;

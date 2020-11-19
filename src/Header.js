@@ -39,18 +39,15 @@ export default class Header extends Component {
     render() {
         return (
             <div className='header-div'>
-                {/* <div className='header-links-div'>
-                    <Link to='/'><img className='icons' alt='' src={home}/></Link>
-                    <Link to='/about'><img className='icons' alt='' src={about}/></Link>
-                </div> */}
                 <div className='header-search-div'>
                     <form onSubmit={this.handleSubmit}>
                         <input 
                             className='search-input'
                             value={this.props.query} 
                             onChange={this.props.handleInput}/>
-                        <button 
-                        className="sm-button sm-adjust-button"><img className='icons' alt='search icon' src={search}/> </button>   
+                        <button className="sm-button sm-adjust-button">
+                            <img className='icons' alt='search icon' src={search}/>
+                        </button>   
                     </form>
                 </div>
                 <div className="dropdown">
@@ -71,8 +68,12 @@ export default class Header extends Component {
                     ?
                         <>
                         <span><Link to='/'>Home</Link></span>
-                        <span><Link to='/favorites'>My <img className='icons' alt='' src={heartFull}/></Link></span>
-                        <span >
+                        <span>
+                            <Link to='/favorites'>
+                                My <img className='icons' alt='heart' src={heartFull}/>
+                            </Link>
+                        </span>
+                        <span>
                             <Link to='/' onClick={this.props.handleLogOut}>
                             Log Out
                             </Link>
@@ -82,7 +83,7 @@ export default class Header extends Component {
                         :
                         <>
                         <span><Link to='/'>Home</Link></span>
-                        <span ><Link to='/signin'>Sign In</Link></span>
+                        <span><Link to='/signin'>Sign In</Link></span>
                         <span><Link to='/signup'>Sign Up</Link></span>
                         <span><Link to='/about'>About</Link></span>
                         </>
