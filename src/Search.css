@@ -29,4 +29,12 @@
 
 .heart-icons {
     cursor: pointer;
+    position: relative;
+    top: 5px;
+    right: 15px;
+}
+
+.item-button {
+    position: relative;
+    left: 15px;
 }
