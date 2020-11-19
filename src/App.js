@@ -70,13 +70,16 @@ export default class App extends Component {
       giphy_id: oneItem.id,
       title: oneItem.title
     };
-
+    try {
     await request
       .post('https://choose-gif-be.herokuapp.com/api/favorites/')
       .set('Authorization', this.state.token)
       .send(newFavorite)
 
     await this.fetchFavorites();
+  } catch(err) {
+    
+  }
   }
 
   //DELETE FAVORITE
