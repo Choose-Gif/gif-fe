@@ -32,7 +32,7 @@ export default class SignUp extends Component {
             <div className='signup-div'>
                 <div className='signup-text-div'>
                     <div className='signup-email-text'>Email:</div>
-                    <div className='signup-password-text'>Password:</div>
+                    <div>Password:</div>
                 </div>
                 <div>
                     <form
