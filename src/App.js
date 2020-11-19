@@ -50,7 +50,12 @@ export default class App extends Component {
 
   handleLogOut = () => {
     localStorage.setItem('TOKEN', '');
-    this.setState({ token: '' })
+    this.setState({ 
+      token: '',
+      query: '',
+      searchResults: [],
+      newFavorites: []
+  })
   }
 
   //FETCH FAVORITES
