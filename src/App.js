@@ -32,8 +32,7 @@ export default class App extends Component {
   handleSubmit = async e => {
     const response = await request
    .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
-   this.setState({ searchResults: response.body.data });
-    //KEEP THE LINE BELOW THIS COMMENT
+   this.setState({ searchResults: response.body.data, query: '' });
     if(this.state.token!==''){
       await this.fetchFavorites();
     }
@@ -102,6 +101,7 @@ export default class App extends Component {
         <Router>
         <Route render={(routerProps) => <Header         
             token={this.state.token}
+            query={this.state.query}
             handleLogOut={this.handleLogOut}
             handleSubmit={this.handleSubmit}
             handleTokenChange={this.handleTokenChange} 
