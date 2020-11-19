@@ -41,7 +41,6 @@ export default class SignIn extends Component {
         return (
             <div className='signup-div'>
                 <div className='signup-content'>
-                    Sign In
                     <form
                      onSubmit={this.handleSubmitSignIn}
                      className='signup-form'>
@@ -62,7 +61,7 @@ export default class SignIn extends Component {
                              type="password"
                             />
                         </label>
-                        <button>
+                        <button className='signup-button'>
                             Sign In
                         </button>
                     </form>

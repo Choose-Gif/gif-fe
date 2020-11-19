@@ -81,7 +81,7 @@ export default class Favorites extends Component {
                             </div>
                         </div>
                     )
-                    : <div><p>No favorites found</p></div>
+                    : <div></div>
                 }
                 </div>
             </div>

@@ -2,21 +2,36 @@ body {
     background-color: #03060e;
     color: #D8F3DC;
 }
-  
+
 .signup-div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
 
 .signup-content {
     text-align: center;
 }
 
 .signup-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 20%;
-    width: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 20%;
+      width: fit-content;
 }
+
+.signup-button {
+      position: relative;
+      left: 8vw;
+}
+
+  @media (min-width: 600px) {
+    .signup-button {
+        position: relative;
+        left: 5.2vw;
+    }
+  
+  }
+
