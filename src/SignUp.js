@@ -23,7 +23,7 @@ export default class SignUp extends Component {
 
         this.props.handleTokenChange(user.body.email, user.body.token)
 
-        this.props.history.push('/search');
+        this.props.history.push('/');
     }
 
 
@@ -31,7 +31,6 @@ export default class SignUp extends Component {
         return (
             <div className='signup-div'>
                 <div className='signup-content'>
-                    Sign Up
                     <form
                      onSubmit={this.handleSubmitSignUp}
                      className='signup-form'>
