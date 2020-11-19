@@ -1,6 +1,6 @@
 body {
-    background-color: #03060e;
-    color: #D8F3DC;
+  background-color: #03060e;
+  color: rgb(255,255,255);
 }
 
 .signup-div {
@@ -32,6 +32,5 @@ body {
         position: relative;
         left: 5.2vw;
     }
-  
   }
 
