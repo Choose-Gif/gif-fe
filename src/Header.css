@@ -81,6 +81,12 @@
     align-self: center;
 }
 
+.fav-header{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (min-width: 500px) {
     .header-search-div{
         display: flex;
@@ -99,3 +105,4 @@
         align-self: center;
     }
   }
+
