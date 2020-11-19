@@ -7,11 +7,13 @@
     display: flex;
     justify-content: space-between;
     padding: 1%;
-    height: 15vh;
+    height: 13vh;
     width: 100vw;
-    border: solid 1px white;
+    /* border: solid 1px white; */
 }
 
+
+/* COMMENTED OUT PREVIOUS CODE BELOW */
 /* .header-search-div{
     display: flex;
     flex-direction: row;
@@ -27,7 +29,7 @@
     align-self: center;
     width: fit-content;
     position: relative;
-    left: 2vw;
+    left: 1vw;
     /* border: solid 1px white; */
 }
 
@@ -90,7 +92,7 @@
 } */
 
 
-.test-button {
+.sm-adjust-button {
     position: relative;
     display: inline-block;
     /* float: left; */
@@ -98,3 +100,26 @@
     top: 0.4vh;
     align-self: center;
 }
+
+
+
+@media (min-width: 500px) {
+    .header-search-div{
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+        width: fit-content;
+        position: relative;
+        left: 1vw;
+        /* border: solid 1px white; */
+    }
+
+    .sm-adjust-button {
+        position: relative;
+        display: inline-block;
+        /* float: left; */
+        left: 0vw;
+        top: 0.4vh;
+        align-self: center;
+    }
+  }

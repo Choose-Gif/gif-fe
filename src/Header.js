@@ -52,7 +52,7 @@ export default class Header extends Component {
                             value={this.props.query} 
                             onChange={this.props.handleInput}/>
                         <button 
-                        className="sm-button test-button"><img className='icons' alt='search icon' src={search}/> </button>   
+                        className="sm-button sm-adjust-button"><img className='icons' alt='search icon' src={search}/> </button>   
                     </form>
                 </div>
                 <div className="dropdown">
