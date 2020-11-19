@@ -5,13 +5,15 @@ body {
 
 .signup-div {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
+      border: solid 1px lightblue;
   }
 
 .signup-content {
     text-align: center;
+    border: solid 1px lightcoral;
 }
 
 .signup-form {
@@ -20,17 +22,18 @@ body {
       align-items: flex-end;
       margin-top: 20%;
       width: fit-content;
+      border: solid 1px gray;
 }
 
 .signup-button {
       position: relative;
-      left: 8vw;
+      /* left: 18vw; */
 }
 
   @media (min-width: 600px) {
     .signup-button {
         position: relative;
-        left: 5.2vw;
+        /* left: 5.2vw; */
     }
   
   }

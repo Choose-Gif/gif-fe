@@ -30,12 +30,16 @@ export default class SignUp extends Component {
     render() {
         return (
             <div className='signup-div'>
+                <div className='signup-text-div'>
+                    <div>Email:</div>
+                    <div>Password:</div>
+                </div>
                 <div className='signup-content'>
                     <form
                      onSubmit={this.handleSubmitSignUp}
                      className='signup-form'>
                         <label>
-                            Email:
+                            {/* Email: */}
                             <input
                              onChange={(e) => {this.setState({ email: e.target.value })}}
                              value={this.state.email}
@@ -43,7 +47,7 @@ export default class SignUp extends Component {
                              />
                         </label>
                         <label>
-                            Password:
+                            {/* Password: */}
                             <input
                              onChange={(e) => {this.setState({ password: e.target.value })}}
                              value={this.state.password}
