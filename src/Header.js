@@ -48,6 +48,7 @@ export default class Header extends Component {
                 <div className='header-search-div'>
                     <form onSubmit={this.handleSubmit}>
                         <input 
+                            className='search-input'
                             value={this.props.query} 
                             onChange={this.props.handleInput}/>
                         <button 
