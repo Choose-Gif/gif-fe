@@ -106,25 +106,22 @@ export default class Home extends Component {
                     </div>
                 </div>
                 <div className="box-group">
-                    <div className="box-single">
+                    <div className="box-single" onClick={() => this.handleCategory(this.state.trendingList[0])}>
                         <img 
-                        onClick={() => this.handleCategory(this.state.trendingList[0])} 
                         className="box-image" 
                         alt={this.state.trendingList[0]} 
                         src={this.state.searchTrendingUrl1} />
                         <div className="box-text">{this.state.trendingList[0]}</div>
                     </div>
-                    <div className="box-single">
+                    <div className="box-single" onClick={() => this.handleCategory(this.state.trendingList[1])}>
                         <img 
-                        onClick={() => this.handleCategory(this.state.trendingList[1])}
                         className="box-image" 
                         alt={this.state.trendingList[1]} 
                         src={this.state.searchTrendingUrl2} />
                         <div className="box-text">{this.state.trendingList[1]}</div>
                     </div>
-                    <div className="box-single">
+                    <div className="box-single" onClick={() => this.handleCategory(this.state.trendingList[2])}>
                         <img 
-                        onClick={() => this.handleCategory(this.state.trendingList[2])}
                         className="box-image" 
                         alt={this.state.trendingList[2]} 
                         src={this.state.searchTrendingUrl3} />
