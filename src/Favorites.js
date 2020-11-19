@@ -34,15 +34,15 @@ export default class Favorites extends Component {
           .get('https://choose-gif-be.herokuapp.com/api/favorites/')
           .set('Authorization', this.props.token)
           await this.setState({ newFavorites: response.body })
-      }
+    }
     
-      fetchGiphyFavorites = async (favoritesList) => {
+    fetchGiphyFavorites = async (favoritesList) => {
         const response = await request
           .get(`https://choose-gif-be.herokuapp.com/api/giphy-favorites/${favoritesList}`)
           .set('Authorization', this.props.token)
     
           await this.setState({ currentFavorites: response.body })
-      }
+    }
 
     //CLICK HANDLER TO DELETE FAVORITE
     handleClickDeleteFavorite = async (id) => {
@@ -62,16 +62,15 @@ export default class Favorites extends Component {
                                 <input className="item-input" value={oneItem.images.original.url} type="hidden" />
 
                                 {this.state.newFavorites.find( oneFavorite => oneFavorite.giphy_id === oneItem.id)
-                                ? <button 
-                                    onClick={() => this.handleClickDeleteFavorite(oneItem.id)}>
-                                        <img className='icons' alt='favorited gif' src={heartFull}/>
-                                    </button>
-                                : <button
-                                    onClick={() => this.props.handleFavorite(oneItem)}
-                                    className="favorite-button">
-                                        <img className='icons' alt='gif not favorited' src={heartEmpty}/>
-                                    </button>
-                                    }
+                                ? <img 
+                                    alt='favorited gif' 
+                                    src={heartFull}
+                                    onClick={() => this.handleClickDeleteFavorite(oneItem.id)} className="heart-icons"/>
+                                : <img 
+                                    alt='gif not favorited' 
+                                    src={heartEmpty}
+                                    onClick={() => this.props.handleFavorite(oneItem)} className="heart-icons"/>
+                                }
 
                                 <CopyToClipboard text={oneItem.images.original.url}
                                 onCopy={() => this.setState({copied: true})}>
