@@ -10,48 +10,56 @@ export default class About extends Component {
     render() {
         return (
 
-                <main className='column main-section '>
-                    <section className='about column border'>
-                        <h2 className ='name'>Bryana Kitchen</h2>
-                        <div className='orientation center'>
+            <main className='column main-section '>
+                <section className='about column border'>
+                    <h2 className='name mobile'>Bryana Kitchen</h2>
+                    <div className='orientation center'>
                         <div className='column center'>
-                            <img className='about-pic' alt='' src={bryana}/>
+                            <img className='about-pic' alt='' src={bryana} />
                             <div className='row icon-container'>
-                                <a href="https://www.linkedin.com/in/bryanakitchen" rel='noreferrer' target="_blank"><img alt='' src={linkedin}/></a>
-                                <a href="https://github.com/bryanakitchen" rel='noreferrer' target="_blank"><img alt='' src={github}/></a>
-                                </div>
-                                </div>
+                                <a href="https://www.linkedin.com/in/bryanakitchen" rel='noreferrer' target="_blank"><img alt='' src={linkedin} /></a>
+                                <a href="https://github.com/bryanakitchen" rel='noreferrer' target="_blank"><img alt='' src={github} /></a>
+                            </div>
+                        </div>
+                        <div className='column center desktop-div'>
+                            <h2 className='name desktop desktop-column'>Bryana Kitchen</h2>
                             <div className='about-blurb'>Born and raised in the Mitten, Bryana enjoys spending time outside in nature or at a live music event.  She prides herself in tackling new projects and hobbies such as fluid painting and roller derby.</div>
                         </div>
-                    </section>    
-                    <section className='about column border'>
-                        <h2 className ='name'>Franco Ortega</h2>
-                        <div className='orientation center'>
+                    </div>
+                </section>
+                <section className='about column border'>
+                    <h2 className='name mobile'>Franco Ortega</h2>
+                    <div className='orientation center'>
                         <div className='column center'>
-                            <img className='about-pic' alt='' src={franco}/>
+                            <img className='about-pic' alt='' src={franco} />
                             <div className='row icon-container'>
-                                <a href="https://www.linkedin.com/in/francoortega" rel='noreferrer' target="_blank"><img alt='' src={linkedin}/></a>
-                                <a href="https://github.com/franco-ortega" rel='noreferrer' target="_blank"><img alt='' src={github}/></a>
-                                </div>
-                                </div>
+                                <a href="https://www.linkedin.com/in/francoortega" rel='noreferrer' target="_blank"><img alt='' src={linkedin} /></a>
+                                <a href="https://github.com/franco-ortega" rel='noreferrer' target="_blank"><img alt='' src={github} /></a>
+                            </div>
+                        </div>
+                        <div className='column center desktop-div'>
+                            <h2 className='name desktop desktop-column'>Franco Ortega</h2>
                             <div className='about-blurb'>Franco is a longtime Portlander who enjoys biking around the city, climbing artificial rock walls, playing boardgames, and making fantasy world maps. A tarot reading was one of the many nudges that led him down the road of software development.</div>
                         </div>
-                    </section>
-                    <section className='about column border'>                
-                        <h2 className ='name'>Kevin Fiero</h2>
-                        <div className='orientation center'>
-                            <div className='column center'>
-                                <img className='about-pic' alt='' src={kevin}/>
-                                <div className='row icon-container'>
-                                <a href="https://www.linkedin.com/in/kevinfiero" rel='noreferrer' target="_blank"><img alt='' src={linkedin}/></a>
-                                <a href="https://github.com/kevinfiero" rel='noreferrer' target="_blank"><img alt='' src={github}/></a>
-                                </div>
-
+                    </div>
+                </section>
+                <section className='about column border'>
+                    <h2 className='name mobile'>Kevin Fiero</h2>
+                    <div className='orientation center'>
+                        <div className='column center'>
+                            <img className='about-pic' alt='' src={kevin} />
+                            <div className='row icon-container'>
+                                <a href="https://www.linkedin.com/in/kevinfiero" rel='noreferrer' target="_blank"><img alt='' src={linkedin} /></a>
+                                <a href="https://github.com/kevinfiero" rel='noreferrer' target="_blank"><img alt='' src={github} /></a>
                             </div>
+                        </div>
+                        <div className='column center desktop-div'>
+                            <h2 className='name desktop desktop-column'>Kevin Fiero</h2>
                             <div className='about-blurb'>Kevin just moved to Portland this summer and has previously lived in New York, Texas, and Michigan. His hobbies include rock climbing, 3D printing, and board games.</div>
                         </div>
-                    </section>
-                </main>
+                    </div>
+                </section>
+            </main>
 
         )
     }
