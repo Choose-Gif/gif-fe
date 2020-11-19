@@ -7,16 +7,38 @@
     display: flex;
     justify-content: space-between;
     padding: 1%;
-    height: 15vh;
+    height: 13vh;
     width: 100vw;
-    border: solid 1px white;
+    /* border: solid 1px white; */
 }
 
+
+/* COMMENTED OUT PREVIOUS CODE BELOW */
+/* .header-search-div{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+} */
+
+
+
+/* NEW STUFF - Section One - START */
 .header-search-div{
     display: flex;
     flex-direction: row;
     align-self: center;
+    width: fit-content;
+    position: relative;
+    left: 1vw;
+    /* border: solid 1px white; */
 }
+
+.search-input {
+    width: 20vw;
+}
+
+/* NEW STUFF - Section One - END */
+
 
 .header-links-div, .favorites-div {
     display: flex;
@@ -59,19 +81,45 @@
     margin: 0 10px;
 }
 
-.header-sign-div {
+
+/* I think this className no longer exists */
+/* .header-sign-div {
     display: flex;
     flex-direction: row;
     align-self: center;
     justify-content: flex-end;
     width: 32%;
-}
+} */
 
-.test-button {
+
+.sm-adjust-button {
     position: relative;
-    /* display: inline-block; */
+    display: inline-block;
     /* float: left; */
-    /* left: 1vw; */
-    /* top: 3vh; */
+    left: -1vw;
+    top: 0.4vh;
     align-self: center;
 }
+
+
+
+@media (min-width: 500px) {
+    .header-search-div{
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+        width: fit-content;
+        position: relative;
+        left: 1vw;
+        /* border: solid 1px white; */
+    }
+
+    .sm-adjust-button {
+        position: relative;
+        display: inline-block;
+        /* float: left; */
+        left: 0vw;
+        top: 0.4vh;
+        align-self: center;
+    }
+  }
