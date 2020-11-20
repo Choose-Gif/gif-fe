@@ -31,8 +31,8 @@ export default class App extends Component {
 
   handleSubmit = async e => {
     const response = await request
-   .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
-   this.setState({ searchResults: response.body.data, query: '' });
+      .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
+    this.setState({ searchResults: response.body.data, query: '' });
     if(this.state.token!==''){
       await this.fetchFavorites();
     }
@@ -40,8 +40,8 @@ export default class App extends Component {
 
   handleCategory = async (category) => {
     const response = await request
-   .get(`https://choose-gif-be.herokuapp.com/search?query=${category}`)
-   await this.setState({ searchResults: response.body.data, query: '' });
+      .get(`https://choose-gif-be.herokuapp.com/search?query=${category}`)
+    await this.setState({ searchResults: response.body.data, query: '' });
   }
 
   handleInput = async e => {
@@ -75,15 +75,15 @@ export default class App extends Component {
       title: oneItem.title
     };
     try {
-    await request
-      .post('https://choose-gif-be.herokuapp.com/api/favorites/')
-      .set('Authorization', this.state.token)
-      .send(newFavorite)
+      await request
+        .post('https://choose-gif-be.herokuapp.com/api/favorites/')
+        .set('Authorization', this.state.token)
+        .send(newFavorite)
 
-    await this.fetchFavorites();
-  } catch(err) {
-    
-  }
+      await this.fetchFavorites();
+
+    } catch(err) {
+    }
   }
 
   //DELETE FAVORITE
@@ -93,7 +93,7 @@ export default class App extends Component {
         .delete(`https://choose-gif-be.herokuapp.com/api/favorites/${favoriteId}`)
         .set('Authorization', this.state.token)
 
-        await this.fetchFavorites();
+      await this.fetchFavorites();
 
     } catch(err) {
       throw err;
@@ -104,17 +104,17 @@ export default class App extends Component {
     return (
       <div>
         <Router>
-        <Route render={(routerProps) => <Header         
-            token={this.state.token}
-            query={this.state.query}
-            handleLogOut={this.handleLogOut}
-            handleSubmit={this.handleSubmit}
-            handleTokenChange={this.handleTokenChange} 
-            handleInput={this.handleInput}
-            handleCategory={this.handleCategory}
-            categories = {this.state.categories}
-                {...routerProps} />} 
-              />
+          <Route render={(routerProps) => <Header         
+              token={this.state.token}
+              query={this.state.query}
+              handleLogOut={this.handleLogOut}
+              handleSubmit={this.handleSubmit}
+              handleTokenChange={this.handleTokenChange} 
+              handleInput={this.handleInput}
+              handleCategory={this.handleCategory}
+              categories = {this.state.categories}
+                  {...routerProps} />} 
+                />
           <Switch>
 
             <Route exact path='/signin' render={(routerProps) => <SignIn 

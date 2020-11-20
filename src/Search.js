@@ -18,9 +18,9 @@ export default class Search extends Component {
     }
 
     render() {
-        console.log(this.props.token)
         return (
             <div className="search-parent">
+                {this.props.searchResults.length > 0 ?
                 <div className="group">
                 {
                     this.props.searchResults.map(oneItem => 
@@ -30,7 +30,7 @@ export default class Search extends Component {
                                 <p>
                                 <input className="item-input" value={oneItem.images.original.url} type="hidden" />
 
-                                {this.props.newFavorites.find( oneFavorite => oneFavorite.giphy_id === oneItem.id)
+                                {this.props.newFavorites.find(oneFavorite => oneFavorite.giphy_id === oneItem.id)
                                 ?  <img 
                                     alt='favorited gif' 
                                     src={heartFull}
@@ -45,7 +45,6 @@ export default class Search extends Component {
                                     ?
                                     <span className="tool-tip-text">Sign In to Save</span>
                                     : <span></span>}
-
                                     </div>
                                 }
                                 <CopyToClipboard text={oneItem.images.original.url}
@@ -58,6 +57,8 @@ export default class Search extends Component {
                     )
                 }
                 </div>
+                : <div className='center' id='no-results'>No Results!</div>
+                }
             </div>
         )
     }

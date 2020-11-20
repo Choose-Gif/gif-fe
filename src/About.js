@@ -9,13 +9,12 @@ import github from './github.svg';
 export default class About extends Component {
     render() {
         return (
-
             <main className='column main-section '>
                 <section className='about column border'>
                     <h2 className='name mobile'>Bryana Kitchen</h2>
                     <div className='orientation center'>
                         <div className='column center'>
-                            <img className='about-pic' alt='' src={bryana} />
+                            <img className='about-pic' alt='Bryana' src={bryana} />
                             <div className='row icon-container'>
                                 <a href="https://www.linkedin.com/in/bryanakitchen" rel='noreferrer' target="_blank"><img alt='' src={linkedin} /></a>
                                 <a href="https://github.com/bryanakitchen" rel='noreferrer' target="_blank"><img alt='' src={github} /></a>
@@ -31,7 +30,7 @@ export default class About extends Component {
                     <h2 className='name mobile'>Franco Ortega</h2>
                     <div className='orientation center'>
                         <div className='column center'>
-                            <img className='about-pic' alt='' src={franco} />
+                            <img className='about-pic' alt='Franco' src={franco} />
                             <div className='row icon-container'>
                                 <a href="https://www.linkedin.com/in/francoortega" rel='noreferrer' target="_blank"><img alt='' src={linkedin} /></a>
                                 <a href="https://github.com/franco-ortega" rel='noreferrer' target="_blank"><img alt='' src={github} /></a>
@@ -47,7 +46,7 @@ export default class About extends Component {
                     <h2 className='name mobile'>Kevin Fiero</h2>
                     <div className='orientation center'>
                         <div className='column center'>
-                            <img className='about-pic' alt='' src={kevin} />
+                            <img className='about-pic' alt='Kevin' src={kevin} />
                             <div className='row icon-container'>
                                 <a href="https://www.linkedin.com/in/kevinfiero" rel='noreferrer' target="_blank"><img alt='' src={linkedin} /></a>
                                 <a href="https://github.com/kevinfiero" rel='noreferrer' target="_blank"><img alt='' src={github} /></a>
@@ -60,7 +59,6 @@ export default class About extends Component {
                     </div>
                 </section>
             </main>
-
         )
     }
 }

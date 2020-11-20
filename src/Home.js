@@ -32,7 +32,7 @@ export default class Home extends Component {
                 
             } catch(err) {
                 throw err;
-            }
+        }
     }
 
     fetchTrendingList = async () => {
@@ -40,8 +40,8 @@ export default class Home extends Component {
             const response = await request.get(`https://choose-gif-be.herokuapp.com/trendinglist`);
             await this.setState({ trendingList: response.body.data });
             
-        } catch(err) {
-            throw err;
+            } catch(err) {
+                throw err;
         }
     }
 
@@ -65,7 +65,7 @@ export default class Home extends Component {
     render() {
         return (
             <div className="parent-container">
-                <div className="scene">
+                <div className="contain">
                     <div className="cube">
                         <div className="cube-face cube-face-front">
                             <CopyToClipboard text={this.state.imageUrl[0]}
@@ -131,11 +131,6 @@ export default class Home extends Component {
                         <div className="box-text">{this.state.trendingList[2]}</div>
                     </div>
                 </div>
-                {/* <div id='trending-terms'>
-                {this.state.trendingList.map(oneItem => {
-                    return <div key={oneItem} className='trending-item'>#{oneItem}</div>
-                })}
-                </div> */}
             </div>
         )
     }

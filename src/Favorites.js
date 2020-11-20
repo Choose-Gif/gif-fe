@@ -31,6 +31,7 @@ export default class Favorites extends Component {
         const response = await request
           .get('https://choose-gif-be.herokuapp.com/api/favorites/')
           .set('Authorization', this.props.token)
+          
           await this.setState({ newFavorites: response.body })
     }
     

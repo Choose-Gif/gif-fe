@@ -26,7 +26,6 @@ export default class SignUp extends Component {
         this.props.history.push('/');
     }
 
-
     render() {
         return (
             <div className='signup-div'>
@@ -60,7 +59,6 @@ export default class SignUp extends Component {
                             </button>
                         }
                     </form>
-
                 </div>
             </div>
         )
