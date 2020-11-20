@@ -68,6 +68,25 @@ body {
     perspective: 400px;
     cursor: copy;
 }
+
+.cube-face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  line-height: 200px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cube-face + img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
   
 .cube-images {
     height: 100%;
@@ -103,24 +122,6 @@ body {
       ;
     }
   }
-
-.cube-face {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border: 2px solid black;
-    line-height: 200px;
-    font-size: 40px;
-    font-weight: bold;
-    text-align: center;
-  }
-
-.cube-face + img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
 
 .cube-face-front  { 
     background-color: rgba(226, 77, 77, 0.322);
