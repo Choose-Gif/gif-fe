@@ -43,17 +43,6 @@ body {
   text-transform: capitalize;
 }
 
-/* #trending-terms{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    justify-items: center;
-    margin: 30px 0px 30px 0px;
-    color: white;
-} */
-
 .trending-item{
     height:30%;
     width: fit-content;
@@ -71,7 +60,7 @@ body {
     flex-wrap: wrap;
 }
 
-.scene {
+.contain {
     width: 200px;
     height: 200px;
     perspective: 600px;
@@ -123,7 +112,6 @@ body {
     line-height: 200px;
     font-size: 40px;
     font-weight: bold;
-    /* color: white; */
     text-align: center;
   }
 
@@ -164,13 +152,6 @@ body {
     transform: rotateX(-90deg) translateZ(100px); 
 }
 
-
-
-
-/* .scene {
-  padding-top: 2vh;
-} */
-
 .box-group {
-  padding-top: 0.5vh;
+  padding-top: 4vh;
 }

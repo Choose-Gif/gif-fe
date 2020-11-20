@@ -65,7 +65,7 @@ export default class Header extends Component {
                     <button className="drop-button-m">Menu</button>
                     <div className="dropdown-content-m">
                     { this.props.token 
-                    ?
+                        ?
                         <>
                         <span><Link to='/'>Home</Link></span>
                         <span>

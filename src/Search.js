@@ -30,7 +30,7 @@ export default class Search extends Component {
                                 <p>
                                 <input className="item-input" value={oneItem.images.original.url} type="hidden" />
 
-                                {this.props.newFavorites.find( oneFavorite => oneFavorite.giphy_id === oneItem.id)
+                                {this.props.newFavorites.find(oneFavorite => oneFavorite.giphy_id === oneItem.id)
                                 ?  <img 
                                     alt='favorited gif' 
                                     src={heartFull}
@@ -45,7 +45,6 @@ export default class Search extends Component {
                                     ?
                                     <span className="tool-tip-text">Sign In to Save</span>
                                     : <span></span>}
-
                                     </div>
                                 }
                                 <CopyToClipboard text={oneItem.images.original.url}
