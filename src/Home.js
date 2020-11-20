@@ -109,6 +109,7 @@ export default class Home extends Component {
                     <div className="box-single" onClick={() => this.handleCategory(this.state.trendingList[0])}>
                         <img 
                         className="box-image" 
+                        style={{ color: '#03060e'}} 
                         alt={this.state.trendingList[0]} 
                         src={this.state.searchTrendingUrl1} />
                         <div className="box-text">{this.state.trendingList[0]}</div>
@@ -116,6 +117,7 @@ export default class Home extends Component {
                     <div className="box-single" onClick={() => this.handleCategory(this.state.trendingList[1])}>
                         <img 
                         className="box-image" 
+                        style={{ color: '#03060e'}} 
                         alt={this.state.trendingList[1]} 
                         src={this.state.searchTrendingUrl2} />
                         <div className="box-text">{this.state.trendingList[1]}</div>
@@ -123,6 +125,7 @@ export default class Home extends Component {
                     <div className="box-single" onClick={() => this.handleCategory(this.state.trendingList[2])}>
                         <img 
                         className="box-image" 
+                        style={{ color: '#03060e'}} 
                         alt={this.state.trendingList[2]} 
                         src={this.state.searchTrendingUrl3} />
                         <div className="box-text">{this.state.trendingList[2]}</div>
