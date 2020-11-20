@@ -10,10 +10,6 @@ Choose Gif uses the [Giphy](http://giphy.com) API to gather raw data, manipulate
 
 Our app is a lightweight version of the Giphy website that allows users to save favorite gifs and copy gif URLs to share with their friends.  The app is compatible with mobile, so users can use it on the go.
 
-### `Semantic Versioning`
-
-Semantic versioning, beginning with version 1.0.0 and incremented as changes are made
-
 ### `Libraries, Frameworks, and Packages` (Oh my!)
 
 Choose Gif is built using React framework with scripts that include React Router Dom, React Copy to Clipboard, and Superagent.
