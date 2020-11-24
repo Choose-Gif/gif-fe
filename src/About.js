@@ -38,7 +38,7 @@ export default class About extends Component {
                         </div>
                         <div className='column center desktop-div'>
                             <h2 className='name desktop desktop-column'>Franco Ortega</h2>
-                            <div className='about-blurb'>Franco is a longtime Portlander who enjoys biking around the city, climbing artificial rock walls, playing boardgames, and making fantasy world maps. A tarot reading was one of the many nudges that led him down the road of software development.</div>
+                            <div className='about-blurb'>Franco is a longtime Portlander who enjoys biking around the city, climbing artificial rock walls, playing boardgames, and making fantasy world maps.</div>
                         </div>
                     </div>
                 </section>
