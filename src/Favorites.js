@@ -4,6 +4,8 @@ import request from 'superagent';
 import heartEmpty from './heart-empty-icon.png';
 import heartFull from './heart-full-icon.png';
 
+import { URL } from './App.js';
+
 export default class Favorites extends Component {
     
     state = {
@@ -21,7 +23,7 @@ export default class Favorites extends Component {
         this.state.newFavorites.forEach(element => {
             favoritesList += ',' + element.giphy_id;
         });
-        if(favoritesList !==''){
+        if (favoritesList !=='') {
             await this.fetchGiphyFavorites(favoritesList)
             await this.fetchFavorites()
         }
@@ -29,7 +31,8 @@ export default class Favorites extends Component {
 
     fetchFavorites = async () => {
         const response = await request
-          .get('https://choose-gif-be.herokuapp.com/api/favorites/')
+        // again, it would have been nice to see these fetches living in a separate file instead of being scattered throughout the app
+          .get('${URL}/api/favorites/')
           .set('Authorization', this.props.token)
           
           await this.setState({ newFavorites: response.body })
@@ -37,7 +40,7 @@ export default class Favorites extends Component {
     
     fetchGiphyFavorites = async (favoritesList) => {
         const response = await request
-          .get(`https://choose-gif-be.herokuapp.com/api/giphy-favorites/${favoritesList}`)
+          .get(`${URL}/api/giphy-favorites/${favoritesList}`)
           .set('Authorization', this.props.token)
     
           await this.setState({ currentFavorites: response.body })
@@ -61,7 +64,8 @@ export default class Favorites extends Component {
                                 <p>
                                 <input className="item-input" value={oneItem.images.original.url} type="hidden" />
 
-                                {this.state.newFavorites.find( oneFavorite => oneFavorite.giphy_id === oneItem.id)
+                                {/* super cool ternery, hooked against the .find! */}
+                                {this.state.newFavorites.find(oneFavorite => oneFavorite.giphy_id === oneItem.id)
                                 ? <img 
                                     alt='favorited gif' 
                                     src={heartFull}
@@ -72,9 +76,11 @@ export default class Favorites extends Component {
                                     onClick={() => this.props.handleFavorite(oneItem)} className="heart-icons"/>
                                 }
 
-                                <CopyToClipboard text={oneItem.images.original.url}
-                                onCopy={() => this.setState({copied: true})}>
-                                <button className="item-button">Copy URL</button>
+                                {/* cool find! */}
+                                <CopyToClipboard 
+                                    text={oneItem.images.original.url}
+                                    onCopy={() => this.setState({copied: true})}>
+                                    <button className="item-button">Copy URL</button>
                                 </CopyToClipboard>
                                 </p>
                             </div>

@@ -3,6 +3,27 @@ import request from 'superagent';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './Home.css';
 
+class Cube extends Component {
+
+    render() {
+        return  <div className="cube">
+        {/* also, would have liked to see some creative mapping here: */}
+        {
+            ['front', 'back', 'right', 'left', 'top', 'bottom'].map((item, index) => 
+                <div className={`cube-face cube-face-${item}`}>
+                <CopyToClipboard text={this.props.imageUrl[index]}
+                onCopy={() => this.setState({copied: true})}>
+                <img className="cube-images" alt={this.props.imageTitle[index]} src={this.props.imageUrl[0]} />
+                </CopyToClipboard>
+            </div>
+            )   
+        }
+
+    </div>
+    }
+}
+
+
 export default class Home extends Component {
     state = {
         trendingResults: [],
@@ -17,19 +38,26 @@ export default class Home extends Component {
     }
 
     componentDidMount = async () => {
-        await this.fetchTrending()
-        await this.fetchTrendingList() 
-        await this.fetchTrendingTerm(this.state.trendingList[0], this.state.trendingList[1], this.state.trendingList[2])   
+        // Promise.all would shoot the requests off at the same time, as long as the order doesn't matter
+        await Promise.all([
+            fetchTrending(),
+            this.fetchTrendingList(),
+            this.fetchTrendingTerm(
+                this.state.trendingList[0], 
+                this.state.trendingList[1], 
+                this.state.trendingList[2])
+        ]) 
     }
 
     fetchTrending = async () => {
         try {
+            // I would have liked to see all these fetched defined somewhere else instead of clogging up your component logic
             const response = await request.get(`https://choose-gif-be.herokuapp.com/trending`);
             await this.setState({ 
                 trendingResults: response.body.data, 
-                imageUrl: response.body.data.map( item => item.images.original.url),
+                imageUrl: this.mungeUrls(response.body.data),
                 imageTitle: response.body.data.map( item => item.title) });
-                
+        
             } catch(err) {
                 throw err;
         }
@@ -45,14 +73,21 @@ export default class Home extends Component {
         }
     }
 
+    mungeUrls = someArr => someArr.map(item => item.images.original.url);
+
     fetchTrendingTerm = async (trendingTerm1, trendingTerm2, trendingTerm3) => {
-        const response1 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm1}`)
-        const response2 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm2}`)
-        const response3 = await request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm3}`)
+        // this could be a faster fetch using Promise.all
+        const [response1, response2, response3] = await Promise.all([
+            request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm1}`),
+            request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm2}`),
+            request.get(`https://choose-gif-be.herokuapp.com/search?query=${trendingTerm3}`),
+        ]);
+        
        await this.setState({ 
-        searchTrendingUrl1: response1.body.data.map( item => item.images.original.url),
-        searchTrendingUrl2: response2.body.data.map( item => item.images.original.url),
-        searchTrendingUrl3: response3.body.data.map( item => item.images.original.url),
+        // might be nice to make this a util
+        searchTrendingUrl1: this.mungeUrls(response1.body.data),
+        searchTrendingUrl2: this.mungeUrls(response2.body.data),
+        searchTrendingUrl3: this.mungeUrls(response3.body.data),
         searchTrendingResults1: response1.body.data
         });
     }
@@ -66,72 +101,24 @@ export default class Home extends Component {
         return (
             <div className="parent-container">
                 <div className="contain">
-                    <div className="cube">
-                        <div className="cube-face cube-face-front">
-                            <CopyToClipboard text={this.state.imageUrl[0]}
-                            onCopy={() => this.setState({copied: true})}>
-                            <img className="cube-images" alt={this.state.imageTitle[0]} src={this.state.imageUrl[0]} />
-                            </CopyToClipboard>
-                        </div>
-                        <div className="cube-face cube-face-back">
-                            <CopyToClipboard text={this.state.imageUrl[1]}
-                            onCopy={() => this.setState({copied: true})}>
-                            <img className="cube-images" alt={this.state.imageTitle[1]} src={this.state.imageUrl[1]} />
-                            </CopyToClipboard>
-                        </div>
-                        <div className="cube-face cube-face-right">
-                            <CopyToClipboard text={this.state.imageUrl[2]}
-                            onCopy={() => this.setState({copied: true})}>
-                            <img className="cube-images" alt={this.state.imageTitle[2]} src={this.state.imageUrl[2]} />
-                            </CopyToClipboard>
-                        </div>
-                        <div className="cube-face cube-face-left">
-                            <CopyToClipboard text={this.state.imageUrl[3]}
-                            onCopy={() => this.setState({copied: true})}>
-                            <img className="cube-images" alt={this.state.imageTitle[3]} src={this.state.imageUrl[3]} />
-                            </CopyToClipboard>
-                        </div>
-                        <div className="cube-face cube-face-top">
-                            <CopyToClipboard text={this.state.imageUrl[4]}
-                            onCopy={() => this.setState({copied: true})}>
-                            <img className="cube-images" alt={this.state.imageTitle[4]} src={this.state.imageUrl[4]} />
-                            </CopyToClipboard>
-                        </div>
-                        <div className="cube-face cube-face-bottom">
-                            <CopyToClipboard text={this.state.imageUrl[5]}
-                            onCopy={() => this.setState({copied: true})}>
-                            <img className="cube-images" alt={this.state.imageTitle[5]} src={this.state.imageUrl[5]} />
-                            </CopyToClipboard>
-                        </div>
-                    </div>
+                    {/* could be refactored into its own component */}
+                    <Cube imageUrl={this.state.imageUrl} imageTitle={this.state.imageTitle}/>
                 </div>
                 <div className="box-group">
-                    <div className="box-single" onClick={() => this.handleCategory(this.state.trendingList[0])}>
-                        <img 
-                        className="box-image" 
-                        style={{ color: '#03060e'}} 
-                        alt={this.state.trendingList[0]} 
-                        src={this.state.searchTrendingUrl1} />
-                        <div className="box-text">{this.state.trendingList[0]}</div>
-                    </div>
-                    <div className="box-single" onClick={() => this.handleCategory(this.state.trendingList[1])}>
-                        <img 
-                        className="box-image" 
-                        style={{ color: '#03060e'}} 
-                        alt={this.state.trendingList[1]} 
-                        src={this.state.searchTrendingUrl2} />
-                        <div className="box-text">{this.state.trendingList[1]}</div>
-                    </div>
-                    <div className="box-single" onClick={() => this.handleCategory(this.state.trendingList[2])}>
-                        <img 
-                        className="box-image" 
-                        style={{ color: '#03060e'}} 
-                        alt={this.state.trendingList[2]} 
-                        src={this.state.searchTrendingUrl3} />
-                        <div className="box-text">{this.state.trendingList[2]}</div>
-                    </div>
+                    {
+                        this.state.trendingList.map((item, index) => 
+                        <div className="box-single" onClick={() => this.handleCategory(item)}>
+                            <img 
+                            className="box-image" 
+                            style={{ color: '#03060e'}} 
+                            alt={item} 
+                            src={this.state[`searchTrendingUrls${index + 1}`]} />
+                            <div className="box-text">{item}</div>
+                        </div>
+                        )
+                    }
                 </div>
-            </div>
+        </div>
         )
     }
 }

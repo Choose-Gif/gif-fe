@@ -54,20 +54,23 @@ export default class Header extends Component {
                     <button className="drop-button">Categories</button>
                     <div className="dropdown-content">
                         {
-                        this.state.categories.map(category => {
-                                return <span key={category.name} onClick={() => this.handleCategory(category.name)}>
-                                    {category.name}</span>
-                            })
+                        this.state.categories.map(category =>
+                             <span 
+                                key={category.name}
+                                // awesome use of inline functions inside a .map
+                                onClick={() => this.handleCategory(category.name)}>
+                                    {category.name}
+                            </span>
+                    )
                         }
                     </div>
                 </div>
                 <div className="dropdown-m">
                     <button className="drop-button-m">Menu</button>
                     <div className="dropdown-content-m">
-                    { this.props.token 
-                        ?
-                        <>
                         <span><Link to='/'>Home</Link></span>
+                        { this.props.token 
+                        ? <>
                         <span>
                             <Link to='/favorites'>
                                 My <img className='icons' alt='heart' src={heartFull}/>
@@ -78,16 +81,13 @@ export default class Header extends Component {
                             Log Out
                             </Link>
                         </span>
-                        <span><Link to='/about'>About</Link></span>
                         </>
-                        :
-                        <>
-                        <span><Link to='/'>Home</Link></span>
-                        <span><Link to='/signin'>Sign In</Link></span>
-                        <span><Link to='/signup'>Sign Up</Link></span>
-                        <span><Link to='/about'>About</Link></span>
+                        : <>
+                            <span><Link to='/signin'>Sign In</Link></span>
+                            <span><Link to='/signup'>Sign Up</Link></span>
                         </>
                     }
+                        <span><Link to='/about'>About</Link></span>
                     </div>
                 </div>
         </div>

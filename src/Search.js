@@ -18,6 +18,10 @@ export default class Search extends Component {
     }
 
     render() {
+        const saveButton = this.props.token === '' 
+            ? <span className="tool-tip-text">Sign In to Save</span>
+            : <span></span>;
+
         return (
             <div className="search-parent">
                 {this.props.searchResults.length > 0 ?
@@ -41,10 +45,8 @@ export default class Search extends Component {
                                     src={heartEmpty}
                                     onClick={() => this.props.handleFavorite(oneItem)} className="heart-icons"/>
 
-                                    {this.props.token === '' 
-                                    ?
-                                    <span className="tool-tip-text">Sign In to Save</span>
-                                    : <span></span>}
+                                {/* I would advise against nested terneries. relocating this logic to the cool zone makes it a bit more readable */}
+                                    { saveButton }
                                     </div>
                                 }
                                 <CopyToClipboard text={oneItem.images.original.url}

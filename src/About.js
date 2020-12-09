@@ -9,6 +9,7 @@ import github from './github.svg';
 export default class About extends Component {
     render() {
         return (
+            // would have like to see this data living in JSON, then mapped over to prevent code duplication
             <main className='column main-section '>
                 <section className='about column border'>
                     <h2 className='name mobile'>Bryana Kitchen</h2>

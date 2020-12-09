@@ -15,6 +15,8 @@ import PrivateRoute from './PrivateRoute.js';
 import request from 'superagent';
 import './App.css';
 
+export const URL = 'https://choose-gif-be.herokuapp.com';
+// would have liked to see these fetches abstracted into functions and living in some other file instead of living right here in the App.js
 export default class App extends Component {
 
   state = { 
@@ -31,7 +33,7 @@ export default class App extends Component {
 
   handleSubmit = async e => {
     const response = await request
-      .get(`https://choose-gif-be.herokuapp.com/search?query=${this.state.query}`)
+      .get(`${URL}/search?query=${this.state.query}`)
     this.setState({ searchResults: response.body.data, query: '' });
     if(this.state.token!==''){
       await this.fetchFavorites();
@@ -40,7 +42,7 @@ export default class App extends Component {
 
   handleCategory = async (category) => {
     const response = await request
-      .get(`https://choose-gif-be.herokuapp.com/search?query=${category}`)
+      .get(`${URL}/search?query=${category}`)
     await this.setState({ searchResults: response.body.data, query: '' });
   }
 
@@ -61,7 +63,7 @@ export default class App extends Component {
   //FETCH FAVORITES
   fetchFavorites = async () => {
     const response = await request
-      .get('https://choose-gif-be.herokuapp.com/api/favorites/')
+      .get('${URL}/api/favorites/')
       .set('Authorization', this.state.token)
       
       this.setState({ newFavorites: response.body })
@@ -76,7 +78,7 @@ export default class App extends Component {
     };
     try {
       await request
-        .post('https://choose-gif-be.herokuapp.com/api/favorites/')
+        .post('${URL}/api/favorites/')
         .set('Authorization', this.state.token)
         .send(newFavorite)
 
@@ -90,7 +92,7 @@ export default class App extends Component {
   handleDeleteFavorite = async (favoriteId) => {
     try {
       await request
-        .delete(`https://choose-gif-be.herokuapp.com/api/favorites/${favoriteId}`)
+        .delete(`${URL}/api/favorites/${favoriteId}`)
         .set('Authorization', this.state.token)
 
       await this.fetchFavorites();
@@ -104,7 +106,7 @@ export default class App extends Component {
     return (
       <div>
         <Router>
-          <Route render={(routerProps) => <Header         
+          <Route render={(routerProps) => <Header   
               token={this.state.token}
               query={this.state.query}
               handleLogOut={this.handleLogOut}
@@ -136,6 +138,7 @@ export default class App extends Component {
             <Route 
             exact path='/search' 
               render={(routerProps) => <Search 
+                // nice stack of props here!      
                 handleTokenChange={this.handleTokenChange} 
                 searchResults={this.state.searchResults}
                 handleInput={this.handleInput} 
