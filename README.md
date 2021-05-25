@@ -42,7 +42,7 @@ Our app consists of two database schemas:
         giphy_id VARCHAR(256) NOT NULL,
         title VARCHAR(256) NOT NULL,
         owner_id INTEGER NOT NULL REFERENCES users(id)
-
+    );
 
 ### `Find us on LinkedIn:`
 - [Franco](https://www.linkedin.com/in/francoortega)
